@@ -1,0 +1,508 @@
+{
+  "tools": [
+    {
+      "tool": "ArcGIS",
+      "total": 133,
+      "usage": {
+        "Rarely": 57,
+        "Sometimes": 43,
+        "Often": 30
+      },
+      "liking": {
+        "Not at all": 20,
+        "Somewhat": 65,
+        "Very much": 44
+      }
+    },
+    {
+      "tool": "Canvas",
+      "total": 111,
+      "usage": {
+        "Rarely": 36,
+        "Sometimes": 54,
+        "Often": 21
+      },
+      "liking": {
+        "Not at all": 8,
+        "Somewhat": 69,
+        "Very much": 31
+      }
+    },
+    {
+      "tool": "D3.js",
+      "total": 266,
+      "usage": {
+        "Rarely": 60,
+        "Sometimes": 78,
+        "Often": 126
+      },
+      "liking": {
+        "Not at all": 10,
+        "Somewhat": 87,
+        "Very much": 161
+      }
+    },
+    {
+      "tool": "Datawrapper",
+      "total": 139,
+      "usage": {
+        "Rarely": 42,
+        "Sometimes": 53,
+        "Often": 43
+      },
+      "liking": {
+        "Not at all": 6,
+        "Somewhat": 48,
+        "Very much": 81
+      }
+    },
+    {
+      "tool": "Excel",
+      "total": 843,
+      "usage": {
+        "Rarely": 105,
+        "Sometimes": 218,
+        "Often": 515
+      },
+      "liking": {
+        "Not at all": 126,
+        "Somewhat": 397,
+        "Very much": 304
+      }
+    },
+    {
+      "tool": "Figma",
+      "total": 249,
+      "usage": {
+        "Rarely": 46,
+        "Sometimes": 73,
+        "Often": 126
+      },
+      "liking": {
+        "Not at all": 11,
+        "Somewhat": 97,
+        "Very much": 137
+      }
+    },
+    {
+      "tool": "Flourish",
+      "total": 133,
+      "usage": {
+        "Rarely": 28,
+        "Sometimes": 54,
+        "Often": 49
+      },
+      "liking": {
+        "Not at all": 1,
+        "Somewhat": 47,
+        "Very much": 81
+      }
+    },
+    {
+      "tool": "ggplot2",
+      "total": 325,
+      "usage": {
+        "Rarely": 62,
+        "Sometimes": 97,
+        "Often": 166
+      },
+      "liking": {
+        "Not at all": 10,
+        "Somewhat": 109,
+        "Very much": 203
+      }
+    },
+    {
+      "tool": "Gephi",
+      "total": 64,
+      "usage": {
+        "Rarely": 30,
+        "Sometimes": 27,
+        "Often": 7
+      },
+      "liking": {
+        "Not at all": 12,
+        "Somewhat": 25,
+        "Very much": 25
+      }
+    },
+    {
+      "tool": "Google Data Studio",
+      "total": 134,
+      "usage": {
+        "Rarely": 39,
+        "Sometimes": 50,
+        "Often": 45
+      },
+      "liking": {
+        "Not at all": 23,
+        "Somewhat": 74,
+        "Very much": 36
+      }
+    },
+    {
+      "tool": "Google Sheets",
+      "total": 370,
+      "usage": {
+        "Rarely": 67,
+        "Sometimes": 136,
+        "Often": 162
+      },
+      "liking": {
+        "Not at all": 61,
+        "Somewhat": 188,
+        "Very much": 109
+      }
+    },
+    {
+      "tool": "Highcharts",
+      "total": 51,
+      "usage": {
+        "Rarely": 15,
+        "Sometimes": 18,
+        "Often": 18
+      },
+      "liking": {
+        "Not at all": 5,
+        "Somewhat": 28,
+        "Very much": 18
+      }
+    },
+    {
+      "tool": "Illustrator",
+      "total": 333,
+      "usage": {
+        "Rarely": 40,
+        "Sometimes": 97,
+        "Often": 194
+      },
+      "liking": {
+        "Not at all": 24,
+        "Somewhat": 105,
+        "Very much": 197
+      }
+    },
+    {
+      "tool": "Leaflet",
+      "total": 86,
+      "usage": {
+        "Rarely": 24,
+        "Sometimes": 42,
+        "Often": 20
+      },
+      "liking": {
+        "Not at all": 5,
+        "Somewhat": 42,
+        "Very much": 38
+      }
+    },
+    {
+      "tool": "Looker",
+      "total": 34,
+      "usage": {
+        "Rarely": 6,
+        "Sometimes": 14,
+        "Often": 14
+      },
+      "liking": {
+        "Not at all": 9,
+        "Somewhat": 16,
+        "Very much": 9
+      }
+    },
+    {
+      "tool": "Mapbox",
+      "total": 120,
+      "usage": {
+        "Rarely": 39,
+        "Sometimes": 59,
+        "Often": 21
+      },
+      "liking": {
+        "Not at all": 3,
+        "Somewhat": 59,
+        "Very much": 54
+      }
+    },
+    {
+      "tool": "Observable",
+      "total": 97,
+      "usage": {
+        "Rarely": 26,
+        "Sometimes": 41,
+        "Often": 29
+      },
+      "liking": {
+        "Not at all": 4,
+        "Somewhat": 36,
+        "Very much": 54
+      }
+    },
+    {
+      "tool": "P5/Processing",
+      "total": 44,
+      "usage": {
+        "Rarely": 20,
+        "Sometimes": 20,
+        "Often": 3
+      },
+      "liking": {
+        "Not at all": 4,
+        "Somewhat": 9,
+        "Very much": 30
+      }
+    },
+    {
+      "tool": "Pen & paper",
+      "total": 333,
+      "usage": {
+        "Rarely": 33,
+        "Sometimes": 123,
+        "Often": 174
+      },
+      "liking": {
+        "Not at all": 6,
+        "Somewhat": 76,
+        "Very much": 242
+      }
+    },
+    {
+      "tool": "Physical materials (other than pen and paper)",
+      "total": 41,
+      "usage": {
+        "Rarely": 9,
+        "Sometimes": 19,
+        "Often": 11
+      },
+      "liking": {
+        "Not at all": 0,
+        "Somewhat": 6,
+        "Very much": 32
+      }
+    },
+    {
+      "tool": "Plotly",
+      "total": 182,
+      "usage": {
+        "Rarely": 49,
+        "Sometimes": 81,
+        "Often": 51
+      },
+      "liking": {
+        "Not at all": 10,
+        "Somewhat": 82,
+        "Very much": 88
+      }
+    },
+    {
+      "tool": "Power BI",
+      "total": 388,
+      "usage": {
+        "Rarely": 67,
+        "Sometimes": 122,
+        "Often": 197
+      },
+      "liking": {
+        "Not at all": 41,
+        "Somewhat": 150,
+        "Very much": 192
+      }
+    },
+    {
+      "tool": "PowerPoint",
+      "total": 551,
+      "usage": {
+        "Rarely": 62,
+        "Sometimes": 184,
+        "Often": 303
+      },
+      "liking": {
+        "Not at all": 96,
+        "Somewhat": 281,
+        "Very much": 167
+      }
+    },
+    {
+      "tool": "Python",
+      "total": 315,
+      "usage": {
+        "Rarely": 57,
+        "Sometimes": 108,
+        "Often": 150
+      },
+      "liking": {
+        "Not at all": 24,
+        "Somewhat": 125,
+        "Very much": 164
+      }
+    },
+    {
+      "tool": "QGIS",
+      "total": 128,
+      "usage": {
+        "Rarely": 37,
+        "Sometimes": 54,
+        "Often": 37
+      },
+      "liking": {
+        "Not at all": 12,
+        "Somewhat": 61,
+        "Very much": 53
+      }
+    },
+    {
+      "tool": "Qlik",
+      "total": 46,
+      "usage": {
+        "Rarely": 11,
+        "Sometimes": 16,
+        "Often": 19
+      },
+      "liking": {
+        "Not at all": 7,
+        "Somewhat": 23,
+        "Very much": 16
+      }
+    },
+    {
+      "tool": "R",
+      "total": 373,
+      "usage": {
+        "Rarely": 65,
+        "Sometimes": 115,
+        "Often": 191
+      },
+      "liking": {
+        "Not at all": 17,
+        "Somewhat": 111,
+        "Very much": 239
+      }
+    },
+    {
+      "tool": "RAWGraphs",
+      "total": 154,
+      "usage": {
+        "Rarely": 35,
+        "Sometimes": 79,
+        "Often": 37
+      },
+      "liking": {
+        "Not at all": 6,
+        "Somewhat": 50,
+        "Very much": 93
+      }
+    },
+    {
+      "tool": "React",
+      "total": 80,
+      "usage": {
+        "Rarely": 7,
+        "Sometimes": 20,
+        "Often": 52
+      },
+      "liking": {
+        "Not at all": 3,
+        "Somewhat": 31,
+        "Very much": 44
+      }
+    },
+    {
+      "tool": "Svelte",
+      "total": 52,
+      "usage": {
+        "Rarely": 7,
+        "Sometimes": 17,
+        "Often": 28
+      },
+      "liking": {
+        "Not at all": 0,
+        "Somewhat": 10,
+        "Very much": 40
+      }
+    },
+    {
+      "tool": "Tableau",
+      "total": 590,
+      "usage": {
+        "Rarely": 85,
+        "Sometimes": 138,
+        "Often": 365
+      },
+      "liking": {
+        "Not at all": 32,
+        "Somewhat": 151,
+        "Very much": 399
+      }
+    },
+    {
+      "tool": "Vega",
+      "total": 36,
+      "usage": {
+        "Rarely": 9,
+        "Sometimes": 19,
+        "Often": 8
+      },
+      "liking": {
+        "Not at all": 2,
+        "Somewhat": 17,
+        "Very much": 17
+      }
+    },
+    {
+      "tool": "Vue",
+      "total": 29,
+      "usage": {
+        "Rarely": 5,
+        "Sometimes": 10,
+        "Often": 14
+      },
+      "liking": {
+        "Not at all": 3,
+        "Somewhat": 10,
+        "Very much": 16
+      }
+    },
+    {
+      "tool": "Web Components",
+      "total": 35,
+      "usage": {
+        "Rarely": 4,
+        "Sometimes": 13,
+        "Often": 17
+      },
+      "liking": {
+        "Not at all": 3,
+        "Somewhat": 15,
+        "Very much": 16
+      }
+    },
+    {
+      "tool": "WebGL",
+      "total": 49,
+      "usage": {
+        "Rarely": 10,
+        "Sometimes": 29,
+        "Often": 10
+      },
+      "liking": {
+        "Not at all": 2,
+        "Somewhat": 28,
+        "Very much": 16
+      }
+    },
+    {
+      "tool": "Other",
+      "total": 172,
+      "usage": {
+        "Rarely": 16,
+        "Sometimes": 55,
+        "Often": 147
+      },
+      "liking": {
+        "Not at all": 14,
+        "Somewhat": 82,
+        "Very much": 122
+      }
+    }
+  ]
+}
