@@ -1,53 +1,53 @@
-<script>
-	import Header from './Header.svelte';
-	import './styles.css';
+<script lang="ts">
+	import 'carbon-components-svelte/css/white.css';
 </script>
 
-<div class="app">
-	<Header />
-
-	<main>
-		<slot />
-	</main>
-
-	<footer>
-		<p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
-	</footer>
-</div>
+<slot />
 
 <style>
-	.app {
-		display: flex;
-		flex-direction: column;
-		min-height: 100vh;
-	}
-
-	main {
-		flex: 1;
-		display: flex;
-		flex-direction: column;
-		padding: 1rem;
-		width: 100%;
-		max-width: 64rem;
-		margin: 0 auto;
+	/* CSS Reset: https://www.joshwcomeau.com/css/custom-css-reset/ */
+	:global(*),
+	:global(*::before),
+	:global(*::after) {
 		box-sizing: border-box;
 	}
-
-	footer {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		padding: 12px;
+	:global(*) {
+		margin: 0;
 	}
-
-	footer a {
-		font-weight: bold;
+	:global(html),
+	:global(body) {
+		height: 100%;
 	}
-
-	@media (min-width: 480px) {
-		footer {
-			padding: 12px 0;
-		}
+	:global(body) {
+		line-height: 1.5;
+		-webkit-font-smoothing: antialiased;
 	}
+	:global(img),
+	:global(picture),
+	:global(video),
+	:global(canvas),
+	:global(svg) {
+		display: block;
+		max-width: 100%;
+	}
+	:global(input),
+	:global(button),
+	:global(textarea),
+	:global(select) {
+		font: inherit;
+	}
+	:global(p),
+	:global(h1),
+	:global(h2),
+	:global(h3),
+	:global(h4),
+	:global(h5),
+	:global(h6) {
+		overflow-wrap: break-word;
+	}
+	:global(#root),
+	:global(#__next) {
+		isolation: isolate;
+	}
+	/* End of CSS reset */
 </style>
