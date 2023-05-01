@@ -56,6 +56,8 @@
 		.thicker()
 		.thicker();
 
+	const minTotalCountDisplayLabel = 200;
+
 	let pattern;
 
 	$: {
@@ -77,14 +79,18 @@
 
 		{#each stackedData as d}
 			{@const item = sortedData[d.index]}
+
 			{@const x = xScale(d[0][0])}
 			{@const width = xScale(d[0][1]) - xScale(d[0][0])}
+
 			{@const yPositiveBar = yScalePositiveBars(positivePercentAccessor(item))}
 			{@const heightPositiveBar =
 				dimensions.innerHeight / 2 - yScalePositiveBars(positivePercentAccessor(item))}
+
 			{@const yNegativeBar = dimensions.innerHeight / 2}
 			{@const heightNegativeBar =
 				yScaleNegativeBars(negativePercentAccessor(item)) - dimensions.innerHeight / 2}
+
 			<rect
 				fill="#fca9a6"
 				stroke="white"
@@ -105,7 +111,7 @@
 					height={heightNegativeBar}
 				/>
 			{/each}
-			{#if item.totalCount > 200}
+			{#if item.totalCount > minTotalCountDisplayLabel}
 				<text {x} y={yPositiveBar} text-anchor="start" font-size="1.5px">{item.name}</text>
 			{/if}
 		{/each}
