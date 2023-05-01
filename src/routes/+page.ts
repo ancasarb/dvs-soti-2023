@@ -1,7 +1,4 @@
-import type { PageLoad } from './$types';
-import { json } from 'd3';
-
-export interface Data {
+export interface Datum {
 	tool: string;
 	total: number;
 	usage: {
@@ -9,15 +6,19 @@ export interface Data {
 		Sometimes: number;
 		Often: number;
 	};
-	liking: {
+	preference: {
 		'Not at all': number;
 		Somewhat: number;
 		'Very much': number;
 	};
 }
 
+export interface Data {
+	tools: Array<Datum>;
+}
+
 /** @type {import('./$types').PageLoad} */
-export async function load({ fetch, params }) {
+export async function load({ fetch }) {
 	const res = await fetch(
 		`https://raw.githubusercontent.com/ancasarb/dvs-soti-2023/main/data/data.json`
 	);
