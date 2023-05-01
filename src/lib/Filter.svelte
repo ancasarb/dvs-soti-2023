@@ -1,14 +1,17 @@
 <script lang="ts">
-	import { Dropdown } from 'carbon-components-svelte';
+	import { ComboBox } from 'carbon-components-svelte';
 
 	export let elements: Array<string>;
+	export let titleText: string;
+	export let placeholder: string;
 
 	$: items = elements.map((d, index) => {
 		return {
 			id: index.toString(),
-			text: d
+			text: d,
+			disabled: false
 		};
 	});
 </script>
 
-<Dropdown direction="top" titleText="Choose your technology" selectedId="0" {items} />
+<ComboBox direction="top" {titleText} {placeholder} {items} />

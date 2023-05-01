@@ -20,7 +20,7 @@ export function getToolFrequency(data: Data): Array<ToolResult> {
 	});
 }
 
-export default function getUserPreference(data: Data): Array<ToolResult> {
+export function getUserPreference(data: Data): Array<ToolResult> {
 	return data.tools.map((d) => {
 		return {
 			name: d.tool,
