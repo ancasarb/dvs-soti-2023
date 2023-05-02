@@ -5,7 +5,7 @@
 	import {
 		negativePercentAccessor,
 		positivePercentAccessor,
-		nameAccessor, 
+		nameAccessor,
 		totalCountAccessor,
 		sortData,
 		stackData,
@@ -45,7 +45,7 @@
 
 	const yScaleNegativeBars = scaleLinear()
 		.domain([0, 100])
-		.range([dimensions.innerHeight / 2, dimensions.innerHeight]);
+		.range([dimensions.innerHeight, dimensions.innerHeight / 2]);
 
 	const t = textures
 		.lines()
@@ -87,12 +87,11 @@
 			{@const width = xScale(d[0][1]) - xScale(d[0][0])}
 
 			{@const yPositiveBar = yScalePositiveBars(positivePercentAccessor(item))}
-			{@const heightPositiveBar =
-				dimensions.innerHeight / 2 - yScalePositiveBars(positivePercentAccessor(item))}
+			{@const heightPositiveBar = dimensions.innerHeight / 2 - yPositiveBar}
 
 			{@const yNegativeBar = dimensions.innerHeight / 2}
 			{@const heightNegativeBar =
-				yScaleNegativeBars(negativePercentAccessor(item)) - dimensions.innerHeight / 2}
+				dimensions.innerHeight - yScaleNegativeBars(negativePercentAccessor(item))}
 
 			<rect
 				fill={nameAccessor(item) == selected ? '#132052' : '#fca9a6'}
