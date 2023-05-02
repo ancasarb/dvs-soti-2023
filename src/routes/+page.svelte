@@ -7,6 +7,12 @@
 	import { collectTools, getToolFrequency, getUserPreference } from '../model/tools';
 
 	export let data: Data;
+
+	let selected = '';
+
+	function onSelect(value: string) {
+		selected = value;
+	}
 </script>
 
 <Grid>
@@ -17,8 +23,8 @@
 	</Row>
 	<Row>
 		<Column sm={3} md={6} lg={12} xlg={12} noGutter={true}>
-			<ToolChart data={getToolFrequency(data)} />
-			<ToolChart data={getUserPreference(data)} />
+			<ToolChart data={getToolFrequency(data)} {selected} />
+			<ToolChart data={getUserPreference(data)} {selected} />
 		</Column>
 		<Column sm={1} md={2} lg={4} xlg={4} noGutter={true}>
 			<svg viewBox="0 0 50 100" style="border:1px solid black" /></Column
@@ -30,6 +36,7 @@
 				elements={collectTools(data)}
 				placeholder="Choose your technology"
 				titleText="Technology"
+				{onSelect}
 			/>
 		</Column>
 	</Row>

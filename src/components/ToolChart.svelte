@@ -5,6 +5,8 @@
 	import {
 		negativePercentAccessor,
 		positivePercentAccessor,
+		nameAccessor, 
+		totalCountAccessor,
 		sortData,
 		stackData,
 		type ToolResult
@@ -13,6 +15,7 @@
 	import textures from 'textures';
 
 	export let data: Array<ToolResult>;
+	export let selected: string;
 
 	const dimensions = {
 		width: 150,
@@ -92,7 +95,7 @@
 				yScaleNegativeBars(negativePercentAccessor(item)) - dimensions.innerHeight / 2}
 
 			<rect
-				fill="#fca9a6"
+				fill={nameAccessor(item) == selected ? '#132052' : '#fca9a6'}
 				stroke="white"
 				stroke-width="0.125"
 				{x}
@@ -100,7 +103,7 @@
 				{width}
 				height={heightPositiveBar}
 			/>
-			{#each ['#feefed', t.url()] as fill}
+			{#each [nameAccessor(item) == selected ? '#d1d2dc' : '#feefed', t.url()] as fill}
 				<rect
 					{fill}
 					stroke="black"
@@ -111,8 +114,8 @@
 					height={heightNegativeBar}
 				/>
 			{/each}
-			{#if item.totalCount > minTotalCountDisplayLabel}
-				<text {x} y={yPositiveBar} text-anchor="start" font-size="1.5px">{item.name}</text>
+			{#if totalCountAccessor(item) > minTotalCountDisplayLabel}
+				<text {x} y={yPositiveBar} text-anchor="start" font-size="1.5px">{nameAccessor(item)}</text>
 			{/if}
 		{/each}
 		<ReferenceLine x1={0} x2={dimensions.width} y={dimensions.innerHeight / 2} />
