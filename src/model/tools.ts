@@ -1,5 +1,5 @@
 import type { Data } from '../routes/+page';
-import { descending, stack } from 'd3';
+import { descending, format, stack } from 'd3';
 import type { Series } from 'd3';
 
 export interface ToolResult {
@@ -31,10 +31,17 @@ export function getToolFrequency(data: Data): Array<ToolResult> {
 		return {
 			name: d.tool,
 			totalCount: d.total,
-			positivePercent: (d.usage.Often * 100) / (d.usage.Often + d.usage.Rarely + d.usage.Sometimes),
-			negativePercent:
-				((d.usage.Rarely + d.usage.Sometimes) * 100) /
-				(d.usage.Often + d.usage.Rarely + d.usage.Sometimes),
+			positivePercent: parseInt(
+				format('.0%')(d.usage.Often / (d.usage.Often + d.usage.Rarely + d.usage.Sometimes)),
+				10
+			),
+			negativePercent: parseInt(
+				format('.0%')(
+					(d.usage.Rarely + d.usage.Sometimes) /
+						(d.usage.Often + d.usage.Rarely + d.usage.Sometimes)
+				),
+				10
+			),
 			high: d.usage.Often,
 			medium: d.usage.Sometimes,
 			low: d.usage.Rarely,
@@ -50,12 +57,20 @@ export function getUserPreference(data: Data): Array<ToolResult> {
 		return {
 			name: d.tool,
 			totalCount: d.total,
-			positivePercent:
-				(d.preference['Very much'] * 100) /
-				(d.preference['Not at all'] + d.preference.Somewhat + d.preference['Very much']),
-			negativePercent:
-				((d.preference['Not at all'] + d.preference.Somewhat) * 100) /
-				(d.preference['Not at all'] + d.preference.Somewhat + d.preference['Very much']),
+			positivePercent: parseInt(
+				format('.0%')(
+					d.preference['Very much'] /
+						(d.preference['Not at all'] + d.preference.Somewhat + d.preference['Very much'])
+				),
+				10
+			),
+			negativePercent: parseInt(
+				format('.0%')(
+					(d.preference['Not at all'] + d.preference.Somewhat) /
+						(d.preference['Not at all'] + d.preference.Somewhat + d.preference['Very much'])
+				),
+				10
+			),
 			high: d.preference['Very much'],
 			medium: d.preference.Somewhat,
 			low: d.preference['Not at all'],
