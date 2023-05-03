@@ -20,7 +20,7 @@ export interface Data {
 /** @type {import('./$types').PageLoad} */
 export async function load({ fetch }) {
 	const res = await fetch(
-		`https://raw.githubusercontent.com/ancasarb/dvs-soti-2023/main/data/data.json`
+		`https://raw.githubusercontent.com/ancasarb/dvs-soti-2023/main/data/tool_frequency_preference_data.json`
 	);
 	const data = await res.json();
 
