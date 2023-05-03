@@ -3,9 +3,22 @@
 	import Filter from '$lib/Filter.svelte';
 	import ToolChart from '../components/ToolChart.svelte';
 
+	import {
+		collectTools,
+		getToolFrequency,
+		getUserPreference,
+		highAccessor,
+		highPercentAccessor,
+		lowAccessor,
+		lowPercentAccessor,
+		mediumAccessor,
+		mediumPercentAccessor,
+		nameAccessor,
+		totalCountAccessor
+	} from '../model/tools';
+	import { format } from 'd3';
 	import type { Data } from './+page';
-	import { collectTools, getToolFrequency, getUserPreference } from '../model/tools';
-
+	
 	export let data: Data;
 
 	let selected = '';
@@ -23,8 +36,50 @@
 	</Row>
 	<Row>
 		<Column sm={3} md={6} lg={12} xlg={12} noGutter={true}>
-			<ToolChart data={getToolFrequency(data)} {selected} />
-			<ToolChart data={getUserPreference(data)} {selected} />
+			<ToolChart
+				data={getToolFrequency(data)}
+				{selected}
+				title="How often do you use each of your selected technologies for data visualization?"
+				heading="Share (%) of users who use selected technologies often"
+				legend={{
+					x: 'Total user count →',
+					y: { positive: 'Often', negative: 'Rarely & Sometimes' }
+				}}
+			>
+				<div slot="tooltip" let:item class="tooltip">
+					<strong><u>{nameAccessor(item)}</u></strong> <br />
+					<strong>Total users:</strong>
+					{totalCountAccessor(item)} <br />
+					<strong>'Often' users:</strong>
+					{highAccessor(item)} ({format('.0%')(highPercentAccessor(item))}) <br />
+					<strong>'Sometimes' users:</strong>
+					{mediumAccessor(item)} ({format('.0%')(mediumPercentAccessor(item))}) <br />
+					<strong>'Rarely' users:</strong>
+					{mediumAccessor(item)} ({format('.0%')(lowPercentAccessor(item))}) <br />
+				</div>
+			</ToolChart>
+			<ToolChart
+				data={getUserPreference(data)}
+				{selected}
+				title="How much do you like using each of your selected technologies for data visualization?"
+				heading="Share (%) of users who enjoy using selected technologies very much"
+				legend={{
+					x: 'Total user count →',
+					y: { positive: 'Very much', negative: 'Not at all & Somewhat' }
+				}}
+			>
+				<div slot="tooltip" let:item class="tooltip">
+					<strong><u>{nameAccessor(item)}</u></strong> <br />
+					<strong>Total users:</strong>
+					{totalCountAccessor(item)} <br />
+					<strong>'Very much' liking users:</strong>
+					{highAccessor(item)} ({format('.0%')(highPercentAccessor(item))}) <br />
+					<strong>'Somewhat' liking users:</strong>
+					{mediumAccessor(item)} ({format('.0%')(mediumPercentAccessor(item))}) <br />
+					<strong>'Not at all' liking users:</strong>
+					{lowAccessor(item)} ({format('.0%')(lowPercentAccessor(item))}) <br />
+				</div>
+			</ToolChart>
 		</Column>
 		<Column sm={1} md={2} lg={4} xlg={4} noGutter={true}>
 			<svg viewBox="0 0 50 100" style="border:1px solid black" /></Column
@@ -35,7 +90,7 @@
 			<Filter
 				elements={collectTools(data)}
 				placeholder="Choose your technology"
-				titleText="Technology"
+				header="How does your tool rank?"
 				{onSelect}
 			/>
 		</Column>
@@ -51,5 +106,12 @@
 
 	h3 {
 		text-align: center;
+	}
+
+	.tooltip {
+		border-radius: 5px;
+		padding: 10px;
+		background-color: white;
+		filter: drop-shadow(rgba(0, 0, 0, 0.3) 0 2px 10px);
 	}
 </style>

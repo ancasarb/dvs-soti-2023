@@ -1,7 +1,7 @@
 <script lang="ts">
 	export let values: Array<{ x: number; y1: number; y2: number; text: string }>;
 
-	const color = '#8a8483';
+	const color = '#e2e2e2';
 </script>
 
 {#each values as { x, y1, y2, text }}

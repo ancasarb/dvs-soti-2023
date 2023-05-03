@@ -1,6 +1,9 @@
 <script lang="ts">
 	import Gridlines from '$lib/Gridlines.svelte';
+	import Heading from '$lib/Heading.svelte';
+	import Legend from '$lib/Legend.svelte';
 	import ReferenceLine from '$lib/ReferenceLine.svelte';
+	import Title from '$lib/Title.svelte';
 
 	import {
 		negativePercentAccessor,
@@ -17,13 +20,18 @@
 	export let data: Array<ToolResult>;
 	export let selected: string;
 
+	export let title: string;
+	export let heading: string;
+
+	export let legend: { x: string; y: { positive: string; negative: string } };
+
 	const dimensions = {
 		width: 150,
-		height: 50,
+		height: 76,
 		margin: {
 			left: 0,
 			right: 10,
-			top: 5,
+			top: 20,
 			bottom: 2
 		},
 		innerHeight: -1,
@@ -69,11 +77,31 @@
 
 	$: gridlines = [
 		{ text: '50', x: dimensions.width, y1: yScalePositiveBars(50), y2: yScaleNegativeBars(50) },
-		{ text: '100%', x: dimensions.width, y1: yScalePositiveBars(100), y2: yScaleNegativeBars(100) }
+		{ text: '100%', x: dimensions.width, y1: yScalePositiveBars(100), y2: yScaleNegativeBars(0) }
 	];
+
+	$: highlighted = null;
+	$: mouseX = null;
+	$: mouseY = null;
+
+	const onMouseOver = function (event, value) {
+		highlighted = value;
+		mouseX = event.clientX;
+		mouseY = event.clientY;
+	};
+
+	const onMouseOut = function () {
+		highlighted = null;
+		mouseX = null;
+		mouseY = null;
+	};
 </script>
 
 <svg viewBox="0 0 {dimensions.width} {dimensions.height}">
+	<g transform={`translate(0,${dimensions.margin.top / 2})`}>
+		<Title text={title} />
+		<Heading text={heading} />
+	</g>
 	<g
 		transform={`translate(${dimensions.margin.left},${dimensions.margin.top})`}
 		bind:this={pattern}
@@ -95,12 +123,14 @@
 
 			<rect
 				fill={nameAccessor(item) == selected ? '#132052' : '#fca9a6'}
-				stroke="white"
+				stroke="black"
 				stroke-width="0.125"
 				{x}
 				y={yPositiveBar}
 				{width}
 				height={heightPositiveBar}
+				on:mouseover={(event) => onMouseOver(event, item)}
+				on:mouseout={() => onMouseOut()}
 			/>
 			{#each [nameAccessor(item) == selected ? '#d1d2dc' : '#feefed', t.url()] as fill}
 				<rect
@@ -111,6 +141,8 @@
 					y={yNegativeBar}
 					{width}
 					height={heightNegativeBar}
+					on:mouseover={(event) => onMouseOver(event, item)}
+					on:mouseout={() => onMouseOut()}
 				/>
 			{/each}
 			{#if totalCountAccessor(item) > minTotalCountDisplayLabel}
@@ -118,5 +150,37 @@
 			{/if}
 		{/each}
 		<ReferenceLine x1={0} x2={dimensions.width} y={dimensions.innerHeight / 2} />
-	</g>
-</svg>
+
+		<Legend x={0} y={dimensions.innerHeight} text={legend.x} fontWeight="bolder" fontSize="2px" />
+		<Legend
+			x={dimensions.width - 2}
+			y={yScalePositiveBars(25)}
+			text={legend.y.positive}
+			color="#999999"
+			fontSize="2px"
+			anchor="end"
+		/>
+		<Legend
+			x={dimensions.width - 2}
+			y={yScaleNegativeBars(25)}
+			text={legend.y.negative}
+			color="#999999"
+			fontSize="2px"
+			anchor="end"
+		/>
+	</g></svg
+>
+
+{#if highlighted != null}
+	<div id="tooltip" style="left: {mouseX + 10}px; top: {mouseY + 10}px">
+		<slot name="tooltip" item={highlighted} />
+	</div>
+{/if}
+
+<style>
+	#tooltip {
+		position: fixed;
+		z-index: 10;
+		background-color: white;
+	}
+</style>

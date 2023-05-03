@@ -1,9 +1,8 @@
 <script lang="ts">
 	import { ComboBox } from 'carbon-components-svelte';
-	import { text } from 'svelte/internal';
 
 	export let elements: Array<string>;
-	export let titleText: string;
+	export let header: string;
 	export let placeholder: string;
 
 	export let onSelect: (item: string) => void;
@@ -19,7 +18,7 @@
 
 <ComboBox
 	direction="top"
-	{titleText}
+	titleText={header}
 	{placeholder}
 	{items}
 	on:select={(e) => {
@@ -27,3 +26,9 @@
 	}}
 	on:clear={() => onSelect('')}
 />
+
+<style>
+	:global(.bx--label) {
+		font-size: 1rem;
+	}
+</style>
