@@ -14,7 +14,7 @@
 		stackData,
 		type ToolResult
 	} from '../model/tools';
-	import { max, scaleLinear, select } from 'd3';
+	import { max, scaleLinear, select, type BaseType } from 'd3';
 	import textures from 'textures';
 
 	export let data: Array<ToolResult>;
@@ -45,7 +45,7 @@
 	$: stackedData = stackData(sortedData);
 
 	$: xMax = max(stackedData[stackedData.length - 1], (d) => d[1]);
-	$: xScale = scaleLinear().domain([0, xMax]).range([0, dimensions.innerWidth]);
+	$: xScale = scaleLinear().domain([0, xMax!]).range([0, dimensions.innerWidth]);
 
 	const yScalePositiveBars = scaleLinear()
 		.domain([0, 100])
@@ -69,7 +69,7 @@
 
 	const minTotalCountDisplayLabel = 200;
 
-	let pattern;
+	let pattern: BaseType;
 
 	$: {
 		select(pattern).call(t);
@@ -80,11 +80,15 @@
 		{ text: '100%', x: dimensions.width, y1: yScalePositiveBars(100), y2: yScaleNegativeBars(0) }
 	];
 
+	let highlighted: ToolResult | null;
+	let mouseX: number | null;
+	let mouseY: number | null;
+
 	$: highlighted = null;
 	$: mouseX = null;
 	$: mouseY = null;
 
-	const onMouseOver = function (event, value) {
+	const onMouseOver = function (event: MouseEvent, value: ToolResult) {
 		highlighted = value;
 		mouseX = event.clientX;
 		mouseY = event.clientY;
@@ -171,7 +175,7 @@
 	</g></svg
 >
 
-{#if highlighted != null}
+{#if highlighted != null && mouseX != null && mouseY != null}
 	<div id="tooltip" style="left: {mouseX + 10}px; top: {mouseY + 10}px">
 		<slot name="tooltip" item={highlighted} />
 	</div>

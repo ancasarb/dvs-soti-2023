@@ -18,7 +18,7 @@
 	} from '../model/tools';
 	import { format } from 'd3';
 	import type { Data } from './+page';
-	
+
 	export let data: Data;
 
 	let selected = '';
