@@ -27,7 +27,7 @@ export const mediumPercentAccessor = (d: ToolResult) => d.mediumPercent;
 export const highPercentAccessor = (d: ToolResult) => d.highPercent;
 
 export function getToolFrequency(data: Data): Array<ToolResult> {
-	return data.tools.map((d) => {
+	return data.prevalence.map((d) => {
 		return {
 			name: d.tool,
 			totalCount: d.total,
@@ -53,7 +53,7 @@ export function getToolFrequency(data: Data): Array<ToolResult> {
 }
 
 export function getUserPreference(data: Data): Array<ToolResult> {
-	return data.tools.map((d) => {
+	return data.prevalence.map((d) => {
 		return {
 			name: d.tool,
 			totalCount: d.total,

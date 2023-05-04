@@ -1,4 +1,4 @@
-export interface Datum {
+export interface PrevalenceDatum {
 	tool: string;
 	total: number;
 	usage: {
@@ -13,16 +13,27 @@ export interface Datum {
 	};
 }
 
+export interface DistributionDatum {
+	tools_used: number;
+}
+
 export interface Data {
-	tools: Array<Datum>;
+	prevalence: Array<PrevalenceDatum>;
+	distribution: Array<DistributionDatum>;
 }
 
 /** @type {import('./$types').PageLoad} */
 export async function load({ fetch }) {
-	const res = await fetch(
-		`https://raw.githubusercontent.com/ancasarb/dvs-soti-2023/main/data/tool_frequency_preference_data.json`
+	const prevalenceRes = await fetch(
+		`https://raw.githubusercontent.com/ancasarb/dvs-soti-2023/main/data/tool_prevalence.json`
 	);
-	const data = await res.json();
+	const prevalenceData = await prevalenceRes.json();
 
-	return { tools: data.tools };
+	const distributionRes = await fetch(
+		`https://raw.githubusercontent.com/ancasarb/dvs-soti-2023/main/data/tool_distribution.json`
+	);
+
+	const distributionData = await distributionRes.json();
+
+	return { prevalence: prevalenceData.prevalence, distribution: distributionData.distribution };
 }

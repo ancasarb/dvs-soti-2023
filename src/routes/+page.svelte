@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Column, Grid, Row } from 'carbon-components-svelte';
 	import Filter from '$lib/Filter.svelte';
-	import ToolChart from '../components/ToolChart.svelte';
+	import ToolPrevalenceChart from '../components/ToolPrevalenceChart.svelte';
 
 	import {
 		collectTools,
@@ -18,6 +18,7 @@
 	} from '../model/tools';
 	import { format } from 'd3';
 	import type { Data } from './+page';
+	import ToolDistributionChart from '../components/ToolDistributionChart.svelte';
 
 	export let data: Data;
 
@@ -36,7 +37,7 @@
 	</Row>
 	<Row>
 		<Column sm={3} md={6} lg={12} xlg={12} noGutter={true}>
-			<ToolChart
+			<ToolPrevalenceChart
 				data={getToolFrequency(data)}
 				{selected}
 				title="How often do you use each of your selected technologies for data visualization?"
@@ -57,8 +58,8 @@
 					<strong>'Rarely' users:</strong>
 					{mediumAccessor(item)} ({format('.0%')(lowPercentAccessor(item))}) <br />
 				</div>
-			</ToolChart>
-			<ToolChart
+			</ToolPrevalenceChart>
+			<ToolPrevalenceChart
 				data={getUserPreference(data)}
 				{selected}
 				title="How much do you like using each of your selected technologies for data visualization?"
@@ -79,11 +80,11 @@
 					<strong>'Not at all' liking users:</strong>
 					{lowAccessor(item)} ({format('.0%')(lowPercentAccessor(item))}) <br />
 				</div>
-			</ToolChart>
+			</ToolPrevalenceChart>
 		</Column>
 		<Column sm={1} md={2} lg={4} xlg={4} noGutter={true}>
-			<svg viewBox="0 0 50 100" style="border:1px solid black" /></Column
-		>
+			<ToolDistributionChart />
+		</Column>
 	</Row>
 	<Row>
 		<Column sm={3} md={6} lg={12} xlg={12}>
