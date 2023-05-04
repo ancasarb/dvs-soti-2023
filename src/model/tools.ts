@@ -88,7 +88,7 @@ export function getUserPreference(data: Data): Array<ToolResult> {
 }
 
 export function collectTools(data: Data): Array<string> {
-	return data.tools.map((d) => d.tool).sort();
+	return data.prevalence.map((d) => d.tool).sort();
 }
 
 export function sortData(data: Array<ToolResult>): Array<ToolResult> {

@@ -22,6 +22,8 @@
 
 	export let data: Data;
 
+	$: console.log(data);
+
 	let selected = '';
 
 	function onSelect(value: string) {
