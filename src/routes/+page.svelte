@@ -33,11 +33,13 @@
 <Grid>
 	<Row padding>
 		<Column sm={4} md={8} lg={16} xlg={16}>
-			<h3>Data Visualization Technologies: usage frequency and user preferences explored</h3>
+			<h3 class="center">
+				Data Visualization Technologies: usage frequency and user preferences explored
+			</h3>
 		</Column>
 	</Row>
 	<Row padding>
-		<Column sm={4} md={8} lg={12} xlg={12}>
+		<Column sm={4} md={8} lg={12} xlg={12} noGutter={true}>
 			<p class="heading">
 				How often do you use each of your selected technologies for data visualization?
 			</p>
@@ -107,13 +109,22 @@
 		</Column>
 	</Row>
 	<Row>
-		<Column sm={3} md={6} lg={12} xlg={12}>
+		<Column sm={3} md={6} lg={12} xlg={12} noGutter={true}>
 			<Filter
 				elements={collectTools(data)}
 				placeholder="Choose your technology"
 				header="How does your tool measure up compared to others?"
 				{onSelect}
 			/>
+		</Column>
+	</Row>
+	<Row padding>
+		<Column sm={4} md={8} lg={16} xlg={16}>
+			<p class="center source">
+				Source: <a href="https://www.datavisualizationsociety.org/soti-challenge-2022"
+					>DVS State of the Industry 2022</a
+				>
+			</p>
 		</Column>
 	</Row>
 </Grid>
@@ -125,7 +136,7 @@
 		font-family: 'Inter', sans-serif;
 	}
 
-	h3 {
+	.center {
 		text-align: center;
 	}
 
@@ -148,7 +159,10 @@
 
 	.small {
 		font-size: 0.5rem;
-		overflow-wrap: break-word;
 		inline-size: 20rem;
+	}
+
+	.source {
+		font-size: 0.75rem;
 	}
 </style>

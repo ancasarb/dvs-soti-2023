@@ -36,8 +36,4 @@
 		font-size: 1.25rem;
 		text-align: center;
 	}
-
-	:global(.bx--list-box__wrapper) {
-		padding-bottom: 1rem;
-	}
 </style>
