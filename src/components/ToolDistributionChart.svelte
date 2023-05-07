@@ -24,8 +24,8 @@
 	const increment = 50;
 	$: minDomain = data[0].x0;
 	$: maxDomain = data[data.length - 1].x1;
-	$: binsMaxLength = Math.ceil(max(data, (d) => d.length) / increment) * increment;
-	$: barWidth = yScale(data[0].x1) - yScale(data[0].x0);
+	$: binsMaxLength = Math.ceil(max(data, (d) => d.length)! / increment) * increment;
+	$: barWidth = yScale(data[0].x1!) - yScale(data[0].x0!);
 
 	$: xScale = scaleLinear().domain([0, binsMaxLength]).range([0, dimensions.innerWidth]);
 	$: yScale = scaleLinear().domain([minDomain!, maxDomain!]).range([0, dimensions.innerHeight]);
@@ -34,12 +34,10 @@
 	let yAxis;
 
 	$: {
-		const xAxisGenerator = axisTop()
-			.scale(xScale)
-			.tickValues(range(0, binsMaxLength + increment, increment));
-		const yAxisGenerator = axisLeft()
-			.scale(yScale)
-			.ticks(maxDomain - minDomain - 1);
+		const xAxisGenerator = axisTop(xScale).tickValues(
+			range(0, binsMaxLength + increment, increment)
+		);
+		const yAxisGenerator = axisLeft(yScale).ticks(maxDomain! - minDomain! - 1);
 
 		select(xAxis).call(xAxisGenerator);
 		select(yAxis).call(yAxisGenerator);
@@ -58,8 +56,8 @@
 		{#each data as bin}
 			<rect
 				x={0}
-				y={yScale(bin.x0)}
-				height={yScale(bin.x1) - yScale(bin.x0)}
+				y={yScale(bin.x0 || 0)}
+				height={yScale(bin.x1 || 0) - yScale(bin.x0 || 0)}
 				width={xScale(bin.length)}
 				fill="#e1dfd0"
 				stroke-width="0.5"

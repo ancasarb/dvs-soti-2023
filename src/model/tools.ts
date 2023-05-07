@@ -113,7 +113,7 @@ export function stackData(data: Array<ToolResult>): Series<
 
 export function binData(data: Data): Bin<number, number>[] {
 	const filtered = filter(data.distribution, (d) => d.tools_used > 0)
-	const maxTools = max(filtered, (d) => d.tools_used);
+	const maxTools = max(filtered, (d) => d.tools_used) || 0;
 	const binGenerator = bin().value(identity).thresholds(maxTools);
 	return binGenerator(filtered.map((d) => d.tools_used));
 }
