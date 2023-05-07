@@ -56,7 +56,7 @@
 			>
 				<div slot="tooltip" let:item class="tooltip">
 					<strong><u>{nameAccessor(item)}</u></strong> <br />
-					<strong>Total users:</strong>
+					<strong>Total* users:</strong>
 					{totalCountAccessor(item)} <br />
 					<strong>'Often' users:</strong>
 					{highAccessor(item)} ({format('.0%')(highPercentAccessor(item))}) <br />
@@ -64,6 +64,11 @@
 					{mediumAccessor(item)} ({format('.0%')(mediumPercentAccessor(item))}) <br />
 					<strong>'Rarely' users:</strong>
 					{mediumAccessor(item)} ({format('.0%')(lowPercentAccessor(item))}) <br />
+					<p class="small">
+						*The sum of the individual user frequency numbers may not necessarily equal the total
+						number of users due to the possibility of users dropping out of the survey or skipping
+						questions.
+					</p>
 				</div>
 			</ToolPrevalenceChart>
 
@@ -81,7 +86,7 @@
 			>
 				<div slot="tooltip" let:item class="tooltip">
 					<strong><u>{nameAccessor(item)}</u></strong> <br />
-					<strong>Total users:</strong>
+					<strong>Total* users:</strong>
 					{totalCountAccessor(item)} <br />
 					<strong>'Very much' liking users:</strong>
 					{highAccessor(item)} ({format('.0%')(highPercentAccessor(item))}) <br />
@@ -89,6 +94,11 @@
 					{mediumAccessor(item)} ({format('.0%')(mediumPercentAccessor(item))}) <br />
 					<strong>'Not at all' liking users:</strong>
 					{lowAccessor(item)} ({format('.0%')(lowPercentAccessor(item))}) <br />
+					<p class="small">
+						*The sum of the individual user preference numbers may not necessarily equal the total
+						number of users due to the possibility of users dropping out of the survey or skipping
+						questions.
+					</p>
 				</div>
 			</ToolPrevalenceChart>
 		</Column>
@@ -134,5 +144,11 @@
 		padding: 10px;
 		background-color: white;
 		filter: drop-shadow(rgba(0, 0, 0, 0.3) 0 2px 10px);
+	}
+
+	.small {
+		font-size: 0.5rem;
+		overflow-wrap: break-word;
+		inline-size: 20rem;
 	}
 </style>
