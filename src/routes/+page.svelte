@@ -4,6 +4,7 @@
 	import ToolPrevalenceChart from '../components/ToolPrevalenceChart.svelte';
 
 	import {
+		binData,
 		collectTools,
 		getToolFrequency,
 		getUserPreference,
@@ -22,8 +23,6 @@
 
 	export let data: Data;
 
-	$: console.log(data);
-
 	let selected = '';
 
 	function onSelect(value: string) {
@@ -32,9 +31,17 @@
 </script>
 
 <Grid>
-	<Row>
+	<Row padding>
 		<Column sm={4} md={8} lg={16} xlg={16}>
 			<h3>Data Visualization Technologies: usage frequency and user preferences explored</h3>
+		</Column>
+	</Row>
+	<Row padding>
+		<Column sm={4} md={8} lg={12} xlg={12}>
+			<p class="heading">
+				How often do you use each of your selected technologies for data visualization?
+			</p>
+			<p>Share (%) of users who use selected technologies often</p>
 		</Column>
 	</Row>
 	<Row>
@@ -42,11 +49,9 @@
 			<ToolPrevalenceChart
 				data={getToolFrequency(data)}
 				{selected}
-				title="How often do you use each of your selected technologies for data visualization?"
-				heading="Share (%) of users who use selected technologies often"
 				legend={{
-					x: 'Total user count →',
-					y: { positive: 'Often', negative: 'Rarely & Sometimes' }
+					x: ['Total user count →'],
+					y: { positive: ['Often'], negative: ['Rarely &', 'Sometimes'] }
 				}}
 			>
 				<div slot="tooltip" let:item class="tooltip">
@@ -61,14 +66,17 @@
 					{mediumAccessor(item)} ({format('.0%')(lowPercentAccessor(item))}) <br />
 				</div>
 			</ToolPrevalenceChart>
+
+			<p class="second heading">
+				How much do you like using each of your selected technologies for data visualization?
+			</p>
+			<p>Share (%) of users who enjoy using selected technologies very much</p>
 			<ToolPrevalenceChart
 				data={getUserPreference(data)}
 				{selected}
-				title="How much do you like using each of your selected technologies for data visualization?"
-				heading="Share (%) of users who enjoy using selected technologies very much"
 				legend={{
-					x: 'Total user count →',
-					y: { positive: 'Very much', negative: 'Not at all & Somewhat' }
+					x: ['Total user count →'],
+					y: { positive: ['Very much'], negative: ['Not at all &', 'Somewhat'] }
 				}}
 			>
 				<div slot="tooltip" let:item class="tooltip">
@@ -84,8 +92,8 @@
 				</div>
 			</ToolPrevalenceChart>
 		</Column>
-		<Column sm={1} md={2} lg={4} xlg={4} noGutter={true}>
-			<ToolDistributionChart />
+		<Column sm={1} md={2} lg={0} xlg={4} noGutter={true}>
+			<ToolDistributionChart data={binData(data)} />
 		</Column>
 	</Row>
 	<Row>
@@ -109,6 +117,16 @@
 
 	h3 {
 		text-align: center;
+	}
+
+	.heading {
+		text-align: left;
+		font-weight: bolder;
+		padding-bottom: 0.25rem;
+	}
+
+	.second {
+		padding-top: 2rem;
 	}
 
 	.tooltip {

@@ -1,9 +1,8 @@
 <script lang="ts">
 	import Gridlines from '$lib/Gridlines.svelte';
-	import Heading from '$lib/Heading.svelte';
 	import Legend from '$lib/Legend.svelte';
 	import ReferenceLine from '$lib/ReferenceLine.svelte';
-	import Title from '$lib/Title.svelte';
+	import Label from '$lib/Label.svelte';
 
 	import {
 		negativePercentAccessor,
@@ -20,19 +19,16 @@
 	export let data: Array<ToolResult>;
 	export let selected: string;
 
-	export let title: string;
-	export let heading: string;
-
-	export let legend: { x: string; y: { positive: string; negative: string } };
+	export let legend: { x: Array<string>; y: { positive: Array<string>; negative: Array<string> } };
 
 	const dimensions = {
-		width: 150,
-		height: 76,
+		width: 1134,
+		height: 600,
 		margin: {
 			left: 0,
-			right: 10,
+			right: 85,
 			top: 20,
-			bottom: 2
+			bottom: 25
 		},
 		innerHeight: -1,
 		innerWidth: -1
@@ -55,19 +51,7 @@
 		.domain([0, 100])
 		.range([dimensions.innerHeight, dimensions.innerHeight / 2]);
 
-	const t = textures
-		.lines()
-		.stroke('#8a8483')
-		.orientation('3/8')
-		.lighter()
-		.lighter()
-		.thicker()
-		.lighter()
-		.lighter()
-		.thicker()
-		.thicker();
-
-	const minTotalCountDisplayLabel = 200;
+	const t = textures.lines().stroke('#8a8483').orientation('3/8').lighter();
 
 	let pattern: BaseType;
 
@@ -102,10 +86,6 @@
 </script>
 
 <svg viewBox="0 0 {dimensions.width} {dimensions.height}">
-	<g transform={`translate(0,${dimensions.margin.top / 2})`}>
-		<Title text={title} />
-		<Heading text={heading} />
-	</g>
 	<g
 		transform={`translate(${dimensions.margin.left},${dimensions.margin.top})`}
 		bind:this={pattern}
@@ -128,7 +108,7 @@
 			<rect
 				fill={nameAccessor(item) == selected ? '#132052' : '#fca9a6'}
 				stroke="black"
-				stroke-width="0.125"
+				stroke-width="0.5"
 				{x}
 				y={yPositiveBar}
 				{width}
@@ -140,7 +120,7 @@
 				<rect
 					{fill}
 					stroke="black"
-					stroke-width="0.125"
+					stroke-width="0.5"
 					{x}
 					y={yNegativeBar}
 					{width}
@@ -149,29 +129,27 @@
 					on:mouseout={() => onMouseOut()}
 				/>
 			{/each}
-			{#if totalCountAccessor(item) > minTotalCountDisplayLabel}
-				<text {x} y={yPositiveBar} text-anchor="start" font-size="1.5px">{nameAccessor(item)}</text>
-			{/if}
+		{/each}
+		{#each stackedData as d}
+			{@const item = sortedData[d.index]}
+
+			{@const x = xScale(d[0][0])}
+			{@const width = xScale(d[0][1]) - xScale(d[0][0])}
+
+			{@const yPositiveBar = yScalePositiveBars(positivePercentAccessor(item))}
+
+			<Label
+				hidden={totalCountAccessor(item) < 200}
+				x={x + width / 2}
+				y={yPositiveBar}
+				text={nameAccessor(item)}
+			/>
 		{/each}
 		<ReferenceLine x1={0} x2={dimensions.width} y={dimensions.innerHeight / 2} />
 
-		<Legend x={0} y={dimensions.innerHeight} text={legend.x} fontWeight="bolder" fontSize="2px" />
-		<Legend
-			x={dimensions.width - 2}
-			y={yScalePositiveBars(25)}
-			text={legend.y.positive}
-			color="#999999"
-			fontSize="2px"
-			anchor="end"
-		/>
-		<Legend
-			x={dimensions.width - 2}
-			y={yScaleNegativeBars(25)}
-			text={legend.y.negative}
-			color="#999999"
-			fontSize="2px"
-			anchor="end"
-		/>
+		<Legend x={0} y={yScaleNegativeBars(20)} text={legend.x} highlight={true} />
+		<Legend x={dimensions.width} y={yScalePositiveBars(30)} text={legend.y.positive} />
+		<Legend x={dimensions.width} y={yScaleNegativeBars(70)} text={legend.y.negative} />
 	</g></svg
 >
 

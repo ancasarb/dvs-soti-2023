@@ -1,6 +1,9 @@
 import type { Data } from '../routes/+page';
-import { descending, format, stack } from 'd3';
+import { bin, descending, format, max, stack, type Bin } from 'd3';
 import type { Series } from 'd3';
+import lodash from 'lodash';
+const filter = lodash.filter;
+const identity = lodash.identity;
 
 export interface ToolResult {
 	name: string;
@@ -106,4 +109,11 @@ export function stackData(data: Array<ToolResult>): Series<
 	return stack().keys(data.map(nameAccessor))([
 		data.reduce((o, d) => ({ ...o, [nameAccessor(d)]: totalCountAccessor(d) }), {})
 	]);
+}
+
+export function binData(data: Data): Bin<number, number>[] {
+	const filtered = filter(data.distribution, (d) => d.tools_used > 0)
+	const maxTools = max(filtered, (d) => d.tools_used);
+	const binGenerator = bin().value(identity).thresholds(maxTools);
+	return binGenerator(filtered.map((d) => d.tools_used));
 }

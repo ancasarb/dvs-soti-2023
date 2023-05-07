@@ -29,6 +29,15 @@
 
 <style>
 	:global(.bx--label) {
-		font-size: 1rem;
+		width: 100%;
+		padding-bottom: 1rem;
+		padding-top: 1rem;
+		font-weight: 500;
+		font-size: 1.25rem;
+		text-align: center;
+	}
+
+	:global(.bx--list-box__wrapper) {
+		padding-bottom: 1rem;
 	}
 </style>
