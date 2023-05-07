@@ -1,6 +1,4 @@
 <script lang="ts">
-	import { each } from 'svelte/internal';
-
 	export let text: Array<string>;
 	export let highlight: boolean = false;
 	export let x: number;
