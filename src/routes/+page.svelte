@@ -113,7 +113,7 @@
 			<Filter
 				elements={collectTools(data)}
 				placeholder="Choose your technology"
-				header="How does your tool measure up compared to others?"
+				header="How does your choice of tool measure up compared to others?"
 				{onSelect}
 			/>
 		</Column>
