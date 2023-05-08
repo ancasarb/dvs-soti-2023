@@ -1,17 +1,20 @@
 <script lang="ts">
+	import Legend from '$lib/Legend.svelte';
+
 	import { axisTop, max, scaleLinear, select, type Bin, axisLeft } from 'd3';
 	import lodash from 'lodash';
 	const range = lodash.range;
 
 	export let data: Bin<number, number>[];
+	export let legend: { x: Array<string>; y: Array<string> };
 
 	const dimensions = {
-		width: 500,
-		height: 800,
+		width: 350,
+		height: 700,
 		margin: {
-			left: 75,
+			left: 80,
 			right: 25,
-			top: 50,
+			top: 75,
 			bottom: 50
 		},
 		innerHeight: -1,
@@ -67,6 +70,8 @@
 		<g class="axis" bind:this={xAxis} />
 		<g class="axis" bind:this={yAxis} />
 	</g>
+	<Legend x={dimensions.width} y={dimensions.margin.top - 25} text={legend.x} />
+	<Legend x={dimensions.margin.left - 20} y={dimensions.margin.top} text={legend.y} />
 </svg>
 
 <style>

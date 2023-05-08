@@ -28,12 +28,15 @@
 />
 
 <style>
-	:global(.bx--label) {
+	:global(.bx--list-box__wrapper label) {
 		width: 100%;
 		padding-bottom: 1rem;
-		padding-top: 1rem;
 		font-weight: 500;
-		font-size: 1.25rem;
+		font-size: 1rem;
 		text-align: center;
+	}
+
+	:global(.bx--list-box__wrapper) {
+		padding-left: 1rem;
 	}
 </style>

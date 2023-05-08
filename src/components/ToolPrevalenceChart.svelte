@@ -18,6 +18,7 @@
 
 	export let data: Array<ToolResult>;
 	export let selected: string;
+	export let sortOrder: string;
 
 	export let legend: { x: Array<string>; y: { positive: Array<string>; negative: Array<string> } };
 
@@ -37,7 +38,7 @@
 	dimensions.innerWidth = dimensions.width - dimensions.margin.left - dimensions.margin.right;
 	dimensions.innerHeight = dimensions.height - dimensions.margin.top - dimensions.margin.bottom;
 
-	$: sortedData = sortData(data);
+	$: sortedData = sortData(data, sortOrder);
 	$: stackedData = stackData(sortedData);
 
 	$: xMax = max(stackedData[stackedData.length - 1], (d) => d[1]);

@@ -94,9 +94,14 @@ export function collectTools(data: Data): Array<string> {
 	return data.prevalence.map((d) => d.tool).sort();
 }
 
-export function sortData(data: Array<ToolResult>): Array<ToolResult> {
+export function sortData(data: Array<ToolResult>, sortOrder: string): Array<ToolResult> {
+	if (sortOrder === 'Total users') {
+		return data.sort(function (x, y) {
+			return descending(totalCountAccessor(x), totalCountAccessor(y));
+		});
+	}
 	return data.sort(function (x, y) {
-		return descending(totalCountAccessor(x), totalCountAccessor(y));
+		return descending(positivePercentAccessor(x), positivePercentAccessor(y));
 	});
 }
 
@@ -112,7 +117,7 @@ export function stackData(data: Array<ToolResult>): Series<
 }
 
 export function binData(data: Data): Bin<number, number>[] {
-	const filtered = filter(data.distribution, (d) => d.tools_used > 0)
+	const filtered = filter(data.distribution, (d) => d.tools_used > 0);
 	const maxTools = max(filtered, (d) => d.tools_used) || 0;
 	const binGenerator = bin().value(identity).thresholds(maxTools);
 	return binGenerator(filtered.map((d) => d.tools_used));
