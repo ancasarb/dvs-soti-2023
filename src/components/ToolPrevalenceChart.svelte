@@ -9,7 +9,6 @@
 		positivePercentAccessor,
 		nameAccessor,
 		totalCountAccessor,
-		sortData,
 		stackData,
 		type ToolResult
 	} from '../model/tools';
@@ -18,7 +17,6 @@
 
 	export let data: Array<ToolResult>;
 	export let selected: string;
-	export let sortOrder: string;
 
 	export let legend: { x: Array<string>; y: { positive: Array<string>; negative: Array<string> } };
 
@@ -38,8 +36,7 @@
 	dimensions.innerWidth = dimensions.width - dimensions.margin.left - dimensions.margin.right;
 	dimensions.innerHeight = dimensions.height - dimensions.margin.top - dimensions.margin.bottom;
 
-	$: sortedData = sortData(data, sortOrder);
-	$: stackedData = stackData(sortedData);
+	$: stackedData = stackData(data);
 
 	$: xMax = max(stackedData[stackedData.length - 1], (d) => d[1]);
 	$: xScale = scaleLinear().domain([0, xMax!]).range([0, dimensions.innerWidth]);
@@ -94,7 +91,7 @@
 		<Gridlines values={gridlines} />
 
 		{#each stackedData as d}
-			{@const item = sortedData[d.index]}
+			{@const item = data[d.index]}
 
 			{@const x = xScale(d[0][0])}
 			{@const width = xScale(d[0][1]) - xScale(d[0][0])}
@@ -132,7 +129,7 @@
 			{/each}
 		{/each}
 		{#each stackedData as d}
-			{@const item = sortedData[d.index]}
+			{@const item = data[d.index]}
 
 			{@const x = xScale(d[0][0])}
 			{@const width = xScale(d[0][1]) - xScale(d[0][0])}

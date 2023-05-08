@@ -21,7 +21,7 @@
 		totalCountAccessor
 	} from '../model/tools';
 	import { format } from 'd3';
-	import type { Data } from './+page';
+	import { _sortData, type Data } from './+page';
 
 	export let data: Data;
 
@@ -64,9 +64,8 @@
 	<Row>
 		<Column sm={0} md={0} lg={12} xlg={12} noGutter={true}>
 			<ToolPrevalenceChart
-				data={getToolFrequency(data)}
+				data={getToolFrequency(_sortData(data, sortOrder))}
 				{selected}
-				{sortOrder}
 				legend={{
 					x: ['Total user count →'],
 					y: { positive: ['Often'], negative: ['Rarely &', 'Sometimes'] }
@@ -95,9 +94,8 @@
 			</p>
 			<p>Share (%) of users who enjoy using selected technologies very much</p>
 			<ToolPrevalenceChart
-				data={getUserPreference(data)}
+				data={getUserPreference(_sortData(data, sortOrder))}
 				{selected}
-				{sortOrder}
 				legend={{
 					x: ['Total user count →'],
 					y: { positive: ['Very much'], negative: ['Not at all &', 'Somewhat'] }

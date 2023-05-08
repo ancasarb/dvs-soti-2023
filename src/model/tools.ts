@@ -1,5 +1,5 @@
-import type { Data } from '../routes/+page';
-import { ascending, bin, descending, format, max, stack, type Bin } from 'd3';
+import type { Data, PrevalenceDatum } from '../routes/+page';
+import { bin, format, max, stack, type Bin } from 'd3';
 import type { Series } from 'd3';
 import lodash from 'lodash';
 const filter = lodash.filter;
@@ -29,8 +29,8 @@ export const lowPercentAccessor = (d: ToolResult) => d.lowPercent;
 export const mediumPercentAccessor = (d: ToolResult) => d.mediumPercent;
 export const highPercentAccessor = (d: ToolResult) => d.highPercent;
 
-export function getToolFrequency(data: Data): Array<ToolResult> {
-	return data.prevalence.map((d) => {
+export function getToolFrequency(data: Array<PrevalenceDatum>): Array<ToolResult> {
+	return data.map((d) => {
 		return {
 			name: d.tool,
 			totalCount: d.total,
@@ -55,8 +55,8 @@ export function getToolFrequency(data: Data): Array<ToolResult> {
 	});
 }
 
-export function getUserPreference(data: Data): Array<ToolResult> {
-	return data.prevalence.map((d) => {
+export function getUserPreference(data: Array<PrevalenceDatum>): Array<ToolResult> {
+	return data.map((d) => {
 		return {
 			name: d.tool,
 			totalCount: d.total,
@@ -92,22 +92,6 @@ export function getUserPreference(data: Data): Array<ToolResult> {
 
 export function collectTools(data: Data): Array<string> {
 	return data.prevalence.map((d) => d.tool).sort();
-}
-
-export function sortData(data: Array<ToolResult>, sortOrder: string): Array<ToolResult> {
-	if (sortOrder === 'Total users') {
-		return data.sort(function (x, y) {
-			return descending(totalCountAccessor(x), totalCountAccessor(y));
-		});
-	}
-	if (sortOrder === 'Alphabetical order') {
-		return data.sort(function (x, y) {
-			return ascending(nameAccessor(x), nameAccessor(y));
-		});
-	}
-	return data.sort(function (x, y) {
-		return descending(positivePercentAccessor(x), positivePercentAccessor(y));
-	});
 }
 
 export function stackData(data: Array<ToolResult>): Series<
