@@ -1,5 +1,5 @@
 import type { Data } from '../routes/+page';
-import { bin, descending, format, max, stack, type Bin } from 'd3';
+import { ascending, bin, descending, format, max, stack, type Bin } from 'd3';
 import type { Series } from 'd3';
 import lodash from 'lodash';
 const filter = lodash.filter;
@@ -98,6 +98,11 @@ export function sortData(data: Array<ToolResult>, sortOrder: string): Array<Tool
 	if (sortOrder === 'Total users') {
 		return data.sort(function (x, y) {
 			return descending(totalCountAccessor(x), totalCountAccessor(y));
+		});
+	}
+	if (sortOrder === 'Alphabetical order') {
+		return data.sort(function (x, y) {
+			return ascending(nameAccessor(x), nameAccessor(y));
 		});
 	}
 	return data.sort(function (x, y) {

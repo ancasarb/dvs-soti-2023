@@ -139,7 +139,7 @@
 			/>
 			<Sort
 				header="Change the order"
-				elements={['Total users', 'Usage frequency', 'User preference']}
+				elements={['Total users', 'Usage frequency', 'User preference', 'Alphabetical order']}
 				{onSort}
 			/>
 		</Column>
