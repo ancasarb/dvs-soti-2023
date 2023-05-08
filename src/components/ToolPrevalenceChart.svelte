@@ -145,7 +145,7 @@
 		{/each}
 		<ReferenceLine x1={0} x2={dimensions.width} y={dimensions.innerHeight / 2} />
 
-		<Legend x={0} y={yScaleNegativeBars(20)} text={legend.x} highlight={true} />
+		<Legend x={0} y={dimensions.innerHeight - 10} text={legend.x} highlight={true} />
 		<Legend x={dimensions.width} y={yScalePositiveBars(30)} text={legend.y.positive} />
 		<Legend x={dimensions.width} y={yScaleNegativeBars(70)} text={legend.y.negative} />
 	</g></svg
