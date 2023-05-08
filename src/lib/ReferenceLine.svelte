@@ -4,4 +4,4 @@
 	export let y: number;
 </script>
 
-<line {x1} {x2} y1={y} y2={y} stroke="black" stroke-width="1.5" />
+<line {x1} {x2} y1={y} y2={y} stroke="#000000" stroke-width="1.5" />

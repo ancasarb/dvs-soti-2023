@@ -33,7 +33,7 @@
 		padding-bottom: 1rem;
 		font-weight: 500;
 		font-size: 1rem;
-		text-align: center;
+		color: #000000;
 	}
 
 	:global(.bx--list-box__wrapper) {

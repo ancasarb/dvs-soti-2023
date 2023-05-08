@@ -28,7 +28,7 @@
 	}
 
 	.highlight {
-		fill: '#000000';
+		fill: #000000;
 		font-size: 0.85rem;
 		font-weight: bolder;
 	}
