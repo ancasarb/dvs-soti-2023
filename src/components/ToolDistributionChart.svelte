@@ -52,6 +52,26 @@
 			.attr('alignment-baseline', 'middle');
 		select(yAxis).select('.tick:last-of-type').attr('visibility', 'hidden');
 	}
+
+	let highlighted: number | null;
+	let mouseX: number | null;
+	let mouseY: number | null;
+
+	$: highlighted = null;
+	$: mouseX = null;
+	$: mouseY = null;
+
+	const onMouseOver = function (event: MouseEvent, value: number) {
+		highlighted = value;
+		mouseX = event.clientX;
+		mouseY = event.clientY;
+	};
+
+	const onMouseOut = function () {
+		highlighted = null;
+		mouseX = null;
+		mouseY = null;
+	};
 </script>
 
 <svg viewBox="0 0 {dimensions.width} {dimensions.height}">
@@ -65,6 +85,8 @@
 				fill="#e1dfd0"
 				stroke-width="0.5"
 				stroke="#c4b9aa"
+				on:mouseover={(event) => onMouseOver(event, bin.length)}
+				on:mouseout={() => onMouseOut()}
 			/>
 		{/each}
 		<g class="axis" bind:this={xAxis} />
@@ -74,9 +96,21 @@
 	<Legend x={dimensions.margin.left - 20} y={dimensions.margin.top} text={legend.y} />
 </svg>
 
+{#if highlighted != null && mouseX != null && mouseY != null}
+	<div id="tooltip" style="left: {mouseX + 10}px; top: {mouseY + 10}px">
+		<slot name="tooltip" item={highlighted} />
+	</div>
+{/if}
+
 <style>
 	.axis {
 		color: #6d604e;
 		stroke-width: 1.5;
+	}
+	
+	#tooltip {
+		position: fixed;
+		z-index: 10;
+		background-color: white;
 	}
 </style>

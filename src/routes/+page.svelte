@@ -36,8 +36,6 @@
 	function onSort(value: string) {
 		sortOrder = value;
 	}
-
-	$: console.log(sortOrder);
 </script>
 
 <Grid>
@@ -130,7 +128,11 @@
 					x: ['Users →'],
 					y: ['Number', 'of tools', 'used', '↓']
 				}}
-			/>
+			>
+				<div slot="tooltip" let:item class="tooltip">
+					<strong>{item}</strong>
+				</div>
+			</ToolDistributionChart>
 			<Filter
 				elements={collectTools(data)}
 				placeholder="Choose your tool"
