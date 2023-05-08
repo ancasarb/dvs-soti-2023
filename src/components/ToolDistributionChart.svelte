@@ -12,10 +12,10 @@
 		width: 350,
 		height: 700,
 		margin: {
-			left: 80,
+			left: 75,
 			right: 25,
-			top: 75,
-			bottom: 50
+			top: 35,
+			bottom: 40
 		},
 		innerHeight: -1,
 		innerWidth: -1
@@ -107,7 +107,7 @@
 		color: #6d604e;
 		stroke-width: 1.5;
 	}
-	
+
 	#tooltip {
 		position: fixed;
 		z-index: 10;
