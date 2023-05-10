@@ -28,11 +28,12 @@
 	$: minDomain = data[0].x0;
 	$: maxDomain = data[data.length - 1].x1;
 	$: binsMaxLength = Math.ceil(max(data, (d) => d.length)! / increment) * increment;
-	$: barWidth = yScale(data[0].x1!) - yScale(data[0].x0!);
-
+	
 	$: xScale = scaleLinear().domain([0, binsMaxLength]).range([0, dimensions.innerWidth]);
 	$: yScale = scaleLinear().domain([minDomain!, maxDomain!]).range([0, dimensions.innerHeight]);
-
+	
+	$: barWidth = yScale(data[0].x1!) - yScale(data[0].x0!);
+	
 	let xAxis;
 	let yAxis;
 
