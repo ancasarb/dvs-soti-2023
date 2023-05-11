@@ -57,7 +57,10 @@
 			<p class="heading">
 				How often do you use each of your selected technologies for data visualization?
 			</p>
-			<p>Share (%) of users who use selected technologies <span class="chart-elem">often</span> compared to <span class="chart-elem">rarely & sometimes</span></p>
+			<p>
+				Share (%) of users who use selected technologies <span class="chart-elem">often</span>
+				compared to <span class="chart-elem">rarely & sometimes</span>
+			</p>
 			<p class="note">Hover your mouse over a bar to explore further.</p>
 		</Column>
 		<Column sm={0} md={0} lg={4} xlg={4} noGutter={true}>
@@ -76,7 +79,17 @@
 			>
 				<div slot="tooltip" let:item class="tooltip">
 					<strong><u>{nameAccessor(item)}</u></strong> <br />
-					<p class="tooltip-body">Out of {totalCountAccessor(item)} <strong>Total</strong> users, {highAccessor(item)} ({format('.0%')(highPercentAccessor(item))}) are <span class="tooltip-highlight">Often</span> users. The rest ({mediumAccessor(item) + lowAccessor(item)} i.e. {format('.0%')(mediumPercentAccessor(item) + lowPercentAccessor(item))}) are either <span class="tooltip-highlight">Rarely</span> users ({lowAccessor(item)} i.e. {format('.0%')(lowPercentAccessor(item))}) or <span class="tooltip-highlight">Sometimes</span> users ({mediumAccessor(item)} i.e. {format('.0%')(mediumPercentAccessor(item))}).</p>
+					<p class="tooltip-body">
+						Out of {totalCountAccessor(item)} <strong>Total</strong> users, {highAccessor(item)} ({format(
+							'.0%'
+						)(highPercentAccessor(item))}) are <span class="tooltip-highlight">Often</span> users.
+						The rest ({mediumAccessor(item) + lowAccessor(item)} i.e. {format('.0%')(
+							mediumPercentAccessor(item) + lowPercentAccessor(item)
+						)}) are either <span class="tooltip-highlight">Rarely</span> users ({lowAccessor(item)} i.e.
+						{format('.0%')(lowPercentAccessor(item))}) or
+						<span class="tooltip-highlight">Sometimes</span>
+						users ({mediumAccessor(item)} i.e. {format('.0%')(mediumPercentAccessor(item))}).
+					</p>
 					<p class="tooltip-note">
 						*The sum of the individual user frequency numbers may not necessarily equal the total
 						number of users due to the possibility of users dropping out of the survey or skipping
@@ -88,7 +101,12 @@
 			<p class="second heading">
 				How much do you like using each of your selected technologies for data visualization?
 			</p>
-			<p>Share (%) of users who enjoy using selected technologies <span class="chart-elem">very much</span> compared to <span class="chart-elem">not at all & somewhat</span></p>
+			<p>
+				Share (%) of users who enjoy using selected technologies <span class="chart-elem"
+					>very much</span
+				>
+				compared to <span class="chart-elem">not at all & somewhat</span>
+			</p>
 			<p class="note padded">Hover your mouse over a bar to explore further.</p>
 			<ToolPrevalenceChartHorizontal
 				data={getUserPreference(_sortData(data, sortOrder))}
@@ -100,7 +118,18 @@
 			>
 				<div slot="tooltip" let:item class="tooltip">
 					<strong><u>{nameAccessor(item)}</u></strong> <br />
-					<p class="tooltip-body">Out of {totalCountAccessor(item)} <strong>Total</strong> users, {highAccessor(item)} ({format('.0%')(highPercentAccessor(item))}) are <span class="tooltip-highlight">Very much</span> liking users. The rest ({mediumAccessor(item) + lowAccessor(item)} i.e. {format('.0%')(mediumPercentAccessor(item) + lowPercentAccessor(item))}) are either <span class="tooltip-highlight">Not at all</span> liking users ({lowAccessor(item)} i.e. {format('.0%')(lowPercentAccessor(item))}) or <span class="tooltip-highlight">Somewhat</span> liking users ({mediumAccessor(item)} i.e. {format('.0%')(mediumPercentAccessor(item))}).</p>
+					<p class="tooltip-body">
+						Out of {totalCountAccessor(item)} <strong>Total</strong> users, {highAccessor(item)} ({format(
+							'.0%'
+						)(highPercentAccessor(item))}) are <span class="tooltip-highlight">Very much</span>
+						liking users. The rest ({mediumAccessor(item) + lowAccessor(item)} i.e. {format('.0%')(
+							mediumPercentAccessor(item) + lowPercentAccessor(item)
+						)}) are either <span class="tooltip-highlight">Not at all</span> liking users ({lowAccessor(
+							item
+						)} i.e. {format('.0%')(lowPercentAccessor(item))}) or
+						<span class="tooltip-highlight">Somewhat</span>
+						liking users ({mediumAccessor(item)} i.e. {format('.0%')(mediumPercentAccessor(item))}).
+					</p>
 					<p class="tooltip-note">
 						*The sum of the individual user frequency numbers may not necessarily equal the total
 						number of users due to the possibility of users dropping out of the survey or skipping
@@ -150,7 +179,10 @@
 			<p class="heading padded">
 				How often do you use each of your selected technologies for data visualization?
 			</p>
-			<p class="padded">Share (%) of users who use selected technologies <span class="chart-elem">often</span> compared to <span class="chart-elem">rarely & sometimes</span></p>
+			<p class="padded">
+				Share (%) of users who use selected technologies <span class="chart-elem">often</span>
+				compared to <span class="chart-elem">rarely & sometimes</span>
+			</p>
 			<p class="note padded">Hover your mouse over a bar to explore further.</p>
 		</Column>
 		<Column sm={4} md={8} lg={0} xlg={0} noGutter={true}>
@@ -164,7 +196,17 @@
 			>
 				<div slot="tooltip" let:item class="tooltip">
 					<strong><u>{nameAccessor(item)}</u></strong> <br />
-					<p class="tooltip-body">Out of {totalCountAccessor(item)} <strong>Total</strong> users, {highAccessor(item)} ({format('.0%')(highPercentAccessor(item))}) are <span class="tooltip-highlight">Often</span> users. The rest ({mediumAccessor(item) + lowAccessor(item)} i.e. {format('.0%')(mediumPercentAccessor(item) + lowPercentAccessor(item))}) are either <span class="tooltip-highlight">Rarely</span> users ({lowAccessor(item)} i.e. {format('.0%')(lowPercentAccessor(item))}) or <span class="tooltip-highlight">Sometimes</span> users ({mediumAccessor(item)} i.e. {format('.0%')(mediumPercentAccessor(item))}).</p>
+					<p class="tooltip-body">
+						Out of {totalCountAccessor(item)} <strong>Total</strong> users, {highAccessor(item)} ({format(
+							'.0%'
+						)(highPercentAccessor(item))}) are <span class="tooltip-highlight">Often</span> users.
+						The rest ({mediumAccessor(item) + lowAccessor(item)} i.e. {format('.0%')(
+							mediumPercentAccessor(item) + lowPercentAccessor(item)
+						)}) are either <span class="tooltip-highlight">Rarely</span> users ({lowAccessor(item)} i.e.
+						{format('.0%')(lowPercentAccessor(item))}) or
+						<span class="tooltip-highlight">Sometimes</span>
+						users ({mediumAccessor(item)} i.e. {format('.0%')(mediumPercentAccessor(item))}).
+					</p>
 					<p class="tooltip-note">
 						*The sum of the individual user frequency numbers may not necessarily equal the total
 						number of users due to the possibility of users dropping out of the survey or skipping
@@ -180,11 +222,13 @@
 				How much do you like using each of your selected technologies for data visualization?
 			</p>
 			<p class="padded">
-				Share (%) of users who enjoy using selected technologies <span class="chart-elem">very much</span> compared to <span class="chart-elem">not at all & somewhat</span>
+				Share (%) of users who enjoy using selected technologies <span class="chart-elem"
+					>very much</span
+				>
+				compared to <span class="chart-elem">not at all & somewhat</span>
 			</p>
 			<p class="note padded">Hover your mouse over a bar to explore further.</p>
-			</Column
-		>
+		</Column>
 		<Column sm={4} md={8} lg={0} xlg={0} noGutter={true}>
 			<ToolPrevalenceChartVertical
 				data={getUserPreference(_sortData(data, sortOrder))}
@@ -196,7 +240,18 @@
 			>
 				<div slot="tooltip" let:item class="tooltip">
 					<strong><u>{nameAccessor(item)}</u></strong> <br />
-					<p class="tooltip-body">Out of {totalCountAccessor(item)} <strong>Total</strong> users, {highAccessor(item)} ({format('.0%')(highPercentAccessor(item))}) are <span class="tooltip-highlight">Very much</span> liking users. The rest ({mediumAccessor(item) + lowAccessor(item)} i.e. {format('.0%')(mediumPercentAccessor(item) + lowPercentAccessor(item))}) are either <span class="tooltip-highlight">Not at all</span> liking users ({lowAccessor(item)} i.e. {format('.0%')(lowPercentAccessor(item))}) or <span class="tooltip-highlight">Somewhat</span> liking users ({mediumAccessor(item)} i.e. {format('.0%')(mediumPercentAccessor(item))}).</p>
+					<p class="tooltip-body">
+						Out of {totalCountAccessor(item)} <strong>Total</strong> users, {highAccessor(item)} ({format(
+							'.0%'
+						)(highPercentAccessor(item))}) are <span class="tooltip-highlight">Very much</span>
+						liking users. The rest ({mediumAccessor(item) + lowAccessor(item)} i.e. {format('.0%')(
+							mediumPercentAccessor(item) + lowPercentAccessor(item)
+						)}) are either <span class="tooltip-highlight">Not at all</span> liking users ({lowAccessor(
+							item
+						)} i.e. {format('.0%')(lowPercentAccessor(item))}) or
+						<span class="tooltip-highlight">Somewhat</span>
+						liking users ({mediumAccessor(item)} i.e. {format('.0%')(mediumPercentAccessor(item))}).
+					</p>
 					<p class="tooltip-note">
 						*The sum of the individual user frequency numbers may not necessarily equal the total
 						number of users due to the possibility of users dropping out of the survey or skipping
@@ -295,7 +350,7 @@
 		text-decoration: underline;
 		text-decoration-color: #999999;
 		text-decoration-thickness: 0.15rem;
-		text-decoration-skip-ink:none;
+		text-decoration-skip-ink: none;
 	}
 
 	.tooltip-highlight {
@@ -304,7 +359,7 @@
 		text-decoration: underline;
 		text-decoration-color: #999999;
 		text-decoration-thickness: 0.15rem;
-		text-decoration-skip-ink:none;
+		text-decoration-skip-ink: none;
 	}
 
 	@media only screen and (max-width: 672px) {
