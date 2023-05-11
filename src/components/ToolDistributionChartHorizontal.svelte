@@ -103,7 +103,7 @@
 </svg>
 
 {#if highlighted != null && mouseX != null && mouseY != null}
-	<div id="tooltip" style="left: {mouseX + 10}px; top: {mouseY + 10}px">
+	<div id="tooltip" style="left: {mouseX - 10}px; top: {mouseY - 50}px">
 		<slot name="tooltip" item={highlighted} />
 	</div>
 {/if}
