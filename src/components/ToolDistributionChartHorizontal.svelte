@@ -93,8 +93,13 @@
 		<g class="axis" transform={`translate(0, ${dimensions.innerHeight})`} bind:this={xAxis} />
 		<g class="axis" bind:this={yAxis} />
 	</g>
-	<Legend x={dimensions.innerWidth + dimensions.margin.left} y={yScale(50)} text={legend.x} />
-	<Legend x={dimensions.margin.left / 2} y={yScale(235)} text={legend.y} />
+	<Legend
+		x={dimensions.innerWidth + dimensions.margin.left}
+		y={yScale(50)}
+		text={legend.x}
+		padding={4}
+	/>
+	<Legend x={dimensions.margin.left / 2} y={yScale(235)} text={legend.y} padding={4} />
 </svg>
 
 {#if highlighted != null && mouseX != null && mouseY != null}

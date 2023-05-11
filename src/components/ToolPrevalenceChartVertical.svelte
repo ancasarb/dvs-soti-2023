@@ -104,7 +104,10 @@
 				dimensions.innerHeight - yScaleNegativeBars(negativePercentAccessor(item))}
 
 			<rect
-				fill={nameAccessor(item) == selected ? '#132052' : '#fca9a6'}
+				fill={nameAccessor(item) == selected ||
+				(highlighted !== null && nameAccessor(item) == nameAccessor(highlighted))
+					? '#132052'
+					: '#fca9a6'}
 				stroke="#000000"
 				stroke-width="0.5"
 				{x}
@@ -114,7 +117,7 @@
 				on:mouseover={(event) => onMouseOver(event, item)}
 				on:mouseout={() => onMouseOut()}
 			/>
-			{#each [nameAccessor(item) == selected ? '#d1d2dc' : '#feefed', t.url()] as fill}
+			{#each [nameAccessor(item) == selected || (highlighted !== null && nameAccessor(item) == nameAccessor(highlighted)) ? '#d1d2dc' : '#feefed', t.url()] as fill}
 				<rect
 					{fill}
 					stroke="#000000"
@@ -152,7 +155,7 @@
 >
 
 {#if highlighted != null && mouseX != null && mouseY != null}
-	<div id="tooltip" style="left: {mouseX + 10}px; top: {mouseY + 10}px">
+	<div id="tooltip" style="left: {mouseX  - 2 * mouseX / 3}px; top: {mouseY + 10}px">
 		<slot name="tooltip" item={highlighted} />
 	</div>
 {/if}
