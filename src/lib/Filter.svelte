@@ -36,7 +36,9 @@
 		color: #000000;
 	}
 
-	:global(.bx--list-box__wrapper) {
-		padding-left: 1rem;
+	@media only screen and (min-width: 1056px) {
+		:global(.bx--list-box__wrapper) {
+			padding-left: 1rem;
+		}
 	}
 </style>
