@@ -20,6 +20,7 @@
 		mediumAccessor,
 		mediumPercentAccessor,
 		nameAccessor,
+		negativePercentAccessor,
 		totalCountAccessor
 	} from '../model/tools';
 	import { format } from 'd3';
@@ -80,15 +81,18 @@
 				<div slot="tooltip" let:item class="tooltip">
 					<strong><u>{nameAccessor(item)}</u></strong> <br />
 					<p class="tooltip-body">
-						Out of {totalCountAccessor(item)} <strong>Total</strong> users, {highAccessor(item)} ({format(
+						Out of {totalCountAccessor(item)} <strong>total</strong> users, {highAccessor(item)} ({format(
 							'.0%'
-						)(highPercentAccessor(item))}) are <span class="tooltip-highlight">Often</span> users.
-						The rest ({mediumAccessor(item) + lowAccessor(item)} i.e. {format('.0%')(
-							mediumPercentAccessor(item) + lowPercentAccessor(item)
-						)}) are either <span class="tooltip-highlight">Rarely</span> users ({lowAccessor(item)} i.e.
+						)(highPercentAccessor(item))}) are <span class="tooltip-highlight">often</span> users.
+						The rest of {mediumAccessor(item) + lowAccessor(item)} users ({negativePercentAccessor(
+							item
+						)}%) are either <span class="tooltip-highlight">rarely</span> users ({lowAccessor(item)}
+						users representing
 						{format('.0%')(lowPercentAccessor(item))}) or
-						<span class="tooltip-highlight">Sometimes</span>
-						users ({mediumAccessor(item)} i.e. {format('.0%')(mediumPercentAccessor(item))}).
+						<span class="tooltip-highlight">sometimes</span>
+						users ({mediumAccessor(item)} users representing {format('.0%')(
+							mediumPercentAccessor(item)
+						)}).
 					</p>
 					<p class="tooltip-note">
 						*The sum of the individual user frequency numbers may not necessarily equal the total
@@ -119,16 +123,19 @@
 				<div slot="tooltip" let:item class="tooltip">
 					<strong><u>{nameAccessor(item)}</u></strong> <br />
 					<p class="tooltip-body">
-						Out of {totalCountAccessor(item)} <strong>Total</strong> users, {highAccessor(item)} ({format(
+						Out of {totalCountAccessor(item)} <strong>total</strong> users, {highAccessor(item)} ({format(
 							'.0%'
-						)(highPercentAccessor(item))}) are <span class="tooltip-highlight">Very much</span>
-						liking users. The rest ({mediumAccessor(item) + lowAccessor(item)} i.e. {format('.0%')(
-							mediumPercentAccessor(item) + lowPercentAccessor(item)
-						)}) are either <span class="tooltip-highlight">Not at all</span> liking users ({lowAccessor(
+						)(highPercentAccessor(item))}) are <span class="tooltip-highlight">very much</span>
+						liking users. The rest of {mediumAccessor(item) + lowAccessor(item)} users ({negativePercentAccessor(
 							item
-						)} i.e. {format('.0%')(lowPercentAccessor(item))}) or
-						<span class="tooltip-highlight">Somewhat</span>
-						liking users ({mediumAccessor(item)} i.e. {format('.0%')(mediumPercentAccessor(item))}).
+						)}%) are either <span class="tooltip-highlight">not at all</span> liking users ({lowAccessor(
+							item
+						)} users representing
+						{format('.0%')(lowPercentAccessor(item))}) or
+						<span class="tooltip-highlight">somewhat</span>
+						liking users ({mediumAccessor(item)} users representing {format('.0%')(
+							mediumPercentAccessor(item)
+						)}).
 					</p>
 					<p class="tooltip-note">
 						*The sum of the individual user frequency numbers may not necessarily equal the total
@@ -197,15 +204,18 @@
 				<div slot="tooltip" let:item class="tooltip">
 					<strong><u>{nameAccessor(item)}</u></strong> <br />
 					<p class="tooltip-body">
-						Out of {totalCountAccessor(item)} <strong>Total</strong> users, {highAccessor(item)} ({format(
+						Out of {totalCountAccessor(item)} <strong>total</strong> users, {highAccessor(item)} ({format(
 							'.0%'
-						)(highPercentAccessor(item))}) are <span class="tooltip-highlight">Often</span> users.
-						The rest ({mediumAccessor(item) + lowAccessor(item)} i.e. {format('.0%')(
-							mediumPercentAccessor(item) + lowPercentAccessor(item)
-						)}) are either <span class="tooltip-highlight">Rarely</span> users ({lowAccessor(item)} i.e.
+						)(highPercentAccessor(item))}) are <span class="tooltip-highlight">often</span> users.
+						The rest of {mediumAccessor(item) + lowAccessor(item)} users ({negativePercentAccessor(
+							item
+						)}%) are either <span class="tooltip-highlight">rarely</span> users ({lowAccessor(item)}
+						users representing
 						{format('.0%')(lowPercentAccessor(item))}) or
-						<span class="tooltip-highlight">Sometimes</span>
-						users ({mediumAccessor(item)} i.e. {format('.0%')(mediumPercentAccessor(item))}).
+						<span class="tooltip-highlight">sometimes</span>
+						users ({mediumAccessor(item)} users representing {format('.0%')(
+							mediumPercentAccessor(item)
+						)}).
 					</p>
 					<p class="tooltip-note">
 						*The sum of the individual user frequency numbers may not necessarily equal the total
@@ -241,16 +251,19 @@
 				<div slot="tooltip" let:item class="tooltip">
 					<strong><u>{nameAccessor(item)}</u></strong> <br />
 					<p class="tooltip-body">
-						Out of {totalCountAccessor(item)} <strong>Total</strong> users, {highAccessor(item)} ({format(
+						Out of {totalCountAccessor(item)} <strong>total</strong> users, {highAccessor(item)} ({format(
 							'.0%'
-						)(highPercentAccessor(item))}) are <span class="tooltip-highlight">Very much</span>
-						liking users. The rest ({mediumAccessor(item) + lowAccessor(item)} i.e. {format('.0%')(
-							mediumPercentAccessor(item) + lowPercentAccessor(item)
-						)}) are either <span class="tooltip-highlight">Not at all</span> liking users ({lowAccessor(
+						)(highPercentAccessor(item))}) are <span class="tooltip-highlight">very much</span>
+						liking users. The rest of {mediumAccessor(item) + lowAccessor(item)} users ({negativePercentAccessor(
 							item
-						)} i.e. {format('.0%')(lowPercentAccessor(item))}) or
-						<span class="tooltip-highlight">Somewhat</span>
-						liking users ({mediumAccessor(item)} i.e. {format('.0%')(mediumPercentAccessor(item))}).
+						)}%) are either <span class="tooltip-highlight">not at all</span> liking users ({lowAccessor(
+							item
+						)} users representing
+						{format('.0%')(lowPercentAccessor(item))}) or
+						<span class="tooltip-highlight">somewhat</span>
+						liking users ({mediumAccessor(item)} users representing {format('.0%')(
+							mediumPercentAccessor(item)
+						)}).
 					</p>
 					<p class="tooltip-note">
 						*The sum of the individual user frequency numbers may not necessarily equal the total

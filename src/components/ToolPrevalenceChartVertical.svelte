@@ -21,8 +21,8 @@
 	export let legend: { x: Array<string>; y: { positive: Array<string>; negative: Array<string> } };
 
 	const dimensions = {
-		width: 1134,
-		height: 600,
+		width: 600,
+		height: 1134,
 		margin: {
 			left: 0,
 			right: 85,
@@ -38,16 +38,16 @@
 
 	$: stackedData = stackData(data);
 
-	$: xMax = max(stackedData[stackedData.length - 1], (d) => d[1]);
-	$: xScale = scaleLinear().domain([0, xMax!]).range([0, dimensions.innerWidth]);
+	$: yMax = max(stackedData[stackedData.length - 1], (d) => d[1]);
+	$: yScale = scaleLinear().domain([0, yMax!]).range([0, dimensions.innerHeight]);
 
-	const yScalePositiveBars = scaleLinear()
+	const xScalePositiveBars = scaleLinear()
 		.domain([0, 100])
-		.range([dimensions.innerHeight / 2, 0]);
+		.range([dimensions.innerWidth / 2, dimensions.innerWidth]);
 
-	const yScaleNegativeBars = scaleLinear()
+	const xScaleNegativeBars = scaleLinear()
 		.domain([0, 100])
-		.range([dimensions.innerHeight, dimensions.innerHeight / 2]);
+		.range([0, dimensions.innerHeight / 2]);
 
 	const t = textures.lines().stroke('#8a8483').orientation('3/8').lighter();
 
@@ -58,8 +58,8 @@
 	}
 
 	$: gridlines = [
-		{ text: '50', x: dimensions.width, y1: yScalePositiveBars(50), y2: yScaleNegativeBars(50) },
-		{ text: '100%', x: dimensions.width, y1: yScalePositiveBars(100), y2: yScaleNegativeBars(0) }
+		{ text: '50', x: dimensions.width, y1: xScalePositiveBars(50), y2: xScaleNegativeBars(50) },
+		{ text: '100%', x: dimensions.width, y1: xScalePositiveBars(100), y2: xScaleNegativeBars(0) }
 	];
 
 	let highlighted: ToolResult | null;

@@ -146,7 +146,12 @@
 				text={nameAccessor(item)}
 			/>
 		{/each}
-		<ReferenceLine x1={0} x2={dimensions.width} y={dimensions.innerHeight / 2} />
+		<ReferenceLine
+			x1={0}
+			x2={dimensions.width}
+			y1={dimensions.innerHeight / 2}
+			y2={dimensions.innerHeight / 2}
+		/>
 
 		<Legend x={0} y={dimensions.innerHeight - 10} text={legend.x} highlight={true} />
 		<Legend x={dimensions.width} y={yScalePositiveBars(30)} text={legend.y.positive} />
