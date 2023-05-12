@@ -59,8 +59,8 @@
 				How often do you use each of your selected technologies for data visualization?
 			</p>
 			<p>
-				Share (%) of users who use selected technologies <span class="chart-elem">often</span>
-				compared to <span class="chart-elem">rarely & sometimes</span>
+				Share (%) of users who use selected technologies <span class="highlight">often</span>
+				compared to <span class="highlight">rarely & sometimes</span>
 			</p>
 			<p class="note">Hover your mouse over a bar to explore further.</p>
 		</Column>
@@ -101,38 +101,53 @@
 					</p>
 				</div>
 			</ToolPrevalenceChartHorizontal>
-			<Row padding>
-				<Column
-					sm={0}
-					md={0}
-					lg={{ span: 6, offset: 4 }}
-					xlg={{ span: 6, offset: 4 }}
-					noGutter={true}
-				>
-					<Filter
-						elements={collectTools(data)}
-						placeholder="Choose your tool"
-						header="How does your choice of technology compare to others?"
-						{onSelect}
-					/>
-					<Sort
-						header="Change the order"
-						elements={['Total users', 'Usage frequency', 'User preference', 'Alphabetical order']}
-						{onSort}
-					/>
-				</Column>
-			</Row>
+		</Column>
+		<Column sm={0} md={0} lg={4} xlg={4}>
+			<ToolDistributionChartVertical
+				data={binData(data)}
+				legend={{
+					x: ['Users →'],
+					y: ['Number', 'of tools', 'used', '↓']
+				}}
+			>
+				<div slot="tooltip" let:item class="tooltip">
+					<strong>{item}</strong>
+				</div>
+			</ToolDistributionChartVertical>
+		</Column>
+	</Row>
+	<Row padding>
+		<Column sm={0} md={0} lg={{ span: 6, offset: 3 }} xlg={{ span: 6, offset: 3 }} noGutter={true}>
+			<Filter
+				elements={collectTools(data)}
+				placeholder="Choose your tool"
+				header="How does your choice of technology compare to others?"
+				{onSelect}
+			/>
+			<Sort
+				header="Change the order"
+				elements={['Total users', 'Usage frequency', 'User preference', 'Alphabetical order']}
+				{onSort}
+			/>
+		</Column>
+	</Row>
 
-			<p class="second heading">
+	<Row padding>
+		<Column sm={0} md={0} lg={12} xlg={12} noGutter={true}>
+			<p class="heading">
 				How much do you like using each of your selected technologies for data visualization?
 			</p>
 			<p>
-				Share (%) of users who enjoy using selected technologies <span class="chart-elem"
+				Share (%) of users who enjoy using selected technologies <span class="highlight"
 					>very much</span
 				>
-				compared to <span class="chart-elem">not at all & somewhat</span>
+				compared to <span class="highlight">not at all & somewhat</span>
 			</p>
 			<p class="note padded">Hover your mouse over a bar to explore further.</p>
+		</Column>
+	</Row>
+	<Row>
+		<Column sm={0} md={0} lg={12} xlg={12} noGutter={true}>
 			<ToolPrevalenceChartHorizontal
 				data={getUserPreference(_sortData(data, sortOrder))}
 				{selected}
@@ -166,19 +181,6 @@
 				</div>
 			</ToolPrevalenceChartHorizontal>
 		</Column>
-		<Column sm={0} md={0} lg={4} xlg={4}>
-			<ToolDistributionChartVertical
-				data={binData(data)}
-				legend={{
-					x: ['Users →'],
-					y: ['Number', 'of tools', 'used', '↓']
-				}}
-			>
-				<div slot="tooltip" let:item class="tooltip">
-					<strong>{item}</strong>
-				</div>
-			</ToolDistributionChartVertical>
-		</Column>
 	</Row>
 	<Row padding>
 		<Column sm={4} md={8} lg={0} xlg={0}>
@@ -197,8 +199,8 @@
 				How often do you use each of your selected technologies for data visualization?
 			</p>
 			<p class="padded">
-				Share (%) of users who use selected technologies <span class="chart-elem">often</span>
-				compared to <span class="chart-elem">rarely & sometimes</span>
+				Share (%) of users who use selected technologies <span class="highlight">often</span>
+				compared to <span class="highlight">rarely & sometimes</span>
 			</p>
 			<p class="note padded">Hover your mouse over a bar to explore further.</p>
 		</Column>
@@ -242,10 +244,10 @@
 				How much do you like using each of your selected technologies for data visualization?
 			</p>
 			<p class="padded">
-				Share (%) of users who enjoy using selected technologies <span class="chart-elem"
+				Share (%) of users who enjoy using selected technologies <span class="highlight"
 					>very much</span
 				>
-				compared to <span class="chart-elem">not at all & somewhat</span>
+				compared to <span class="highlight">not at all & somewhat</span>
 			</p>
 			<p class="note padded">Hover your mouse over a bar to explore further.</p>
 		</Column>
@@ -344,10 +346,6 @@
 		font-style: italic;
 	}
 
-	.second {
-		padding-top: 2rem;
-	}
-
 	.side {
 		padding-left: 3rem;
 	}
@@ -369,16 +367,16 @@
 		font-size: 0.85rem;
 	}
 
-	.chart-elem {
+	.tooltip-highlight {
+		color: #999999;
+		font-weight: 600;
 		text-decoration: underline;
 		text-decoration-color: #999999;
 		text-decoration-thickness: 0.15rem;
 		text-decoration-skip-ink: none;
 	}
 
-	.tooltip-highlight {
-		color: #999999;
-		font-weight: 600;
+	.highlight {
 		text-decoration: underline;
 		text-decoration-color: #999999;
 		text-decoration-thickness: 0.15rem;
