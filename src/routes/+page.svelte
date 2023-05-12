@@ -101,6 +101,27 @@
 					</p>
 				</div>
 			</ToolPrevalenceChartHorizontal>
+			<Row padding>
+				<Column
+					sm={0}
+					md={0}
+					lg={{ span: 6, offset: 4 }}
+					xlg={{ span: 6, offset: 4 }}
+					noGutter={true}
+				>
+					<Filter
+						elements={collectTools(data)}
+						placeholder="Choose your tool"
+						header="How does your choice of technology compare to others?"
+						{onSelect}
+					/>
+					<Sort
+						header="Change the order"
+						elements={['Total users', 'Usage frequency', 'User preference', 'Alphabetical order']}
+						{onSort}
+					/>
+				</Column>
+			</Row>
 
 			<p class="second heading">
 				How much do you like using each of your selected technologies for data visualization?
@@ -157,17 +178,6 @@
 					<strong>{item}</strong>
 				</div>
 			</ToolDistributionChartVertical>
-			<Filter
-				elements={collectTools(data)}
-				placeholder="Choose your tool"
-				header="How does your choice of technology compare to others?"
-				{onSelect}
-			/>
-			<Sort
-				header="Change the order"
-				elements={['Total users', 'Usage frequency', 'User preference', 'Alphabetical order']}
-				{onSort}
-			/>
 		</Column>
 	</Row>
 	<Row padding>
