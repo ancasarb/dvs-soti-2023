@@ -304,7 +304,7 @@
 			<p class="heading padded">How many technologies do you use to visualize data?</p>
 		</Column>
 	</Row>
-	<Row padding>
+	<Row>
 		<Column sm={4} md={8} lg={{ span: 9, offset: 2 }} xlg={{ span: 9, offset: 2 }} noGutter={true}>
 			<ToolDistributionChartHorizontal
 				data={binData(data)}
