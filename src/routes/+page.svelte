@@ -42,7 +42,7 @@
 
 <Grid>
 	<Row padding>
-		<Column sm={0} md={0} lg={16} xlg={16}>
+		<Column sm={4} md={8} lg={16} xlg={16}>
 			<h3 class="title">
 				Data Visualization Technologies: usage frequency and user preferences explored
 			</h3>
@@ -179,17 +179,6 @@
 		</Column>
 	</Row>
 	<Row padding>
-		<Column sm={4} md={8} lg={0} xlg={0}>
-			<h3 class="title">
-				Data Visualization Technologies: usage frequency and user preferences explored
-			</h3>
-			<Source
-				text="DVS State of the Industry 2022"
-				link="https://www.datavisualizationsociety.org/soti-challenge-2022"
-			/>
-		</Column>
-	</Row>
-	<Row padding>
 		<Column sm={4} md={8} lg={0} xlg={0} noGutter={true}>
 			<p class="heading padded">
 				How often do you use each of your selected technologies for data visualization?
@@ -200,6 +189,8 @@
 			</p>
 			<p class="note padded">Hover your mouse over a bar to explore further.</p>
 		</Column>
+	</Row>
+	<Row>
 		<Column sm={4} md={8} lg={0} xlg={0} noGutter={true}>
 			<ToolPrevalenceChartVertical
 				data={getToolFrequency(_sortData(data, sortOrder))}
@@ -263,6 +254,8 @@
 			</p>
 			<p class="note padded">Hover your mouse over a bar to explore further.</p>
 		</Column>
+	</Row>
+	<Row>
 		<Column sm={4} md={8} lg={0} xlg={0} noGutter={true}>
 			<ToolPrevalenceChartVertical
 				data={getUserPreference(_sortData(data, sortOrder))}
