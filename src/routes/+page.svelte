@@ -64,7 +64,7 @@
 			<p class="note">Hover your mouse over a bar to explore further.</p>
 		</Column>
 	</Row>
-	<!-- <Row>
+	<Row>
 		<Column
 			sm={0}
 			md={0}
@@ -189,7 +189,7 @@
 			/>
 		</Column>
 	</Row>
-	<Row padding>
+	<!-- <Row padding>
 		<Column sm={4} md={8} lg={0} xlg={0} noGutter={true}>
 			<p class="heading padded">
 				How often do you use each of your selected technologies for data visualization?
