@@ -21,7 +21,7 @@
 	export let legend: { cross: Array<string>; positive: Array<string>; negative: Array<string> };
 
 	const dimensions = {
-		width: 1134,
+		width: 1135,
 		height: 600,
 		margin: {
 			left: 0,
