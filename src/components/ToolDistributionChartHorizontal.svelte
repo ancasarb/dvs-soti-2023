@@ -12,10 +12,10 @@
 		width: 650,
 		height: 400,
 		margin: {
-			left: 80,
-			right: 0,
-			top: 15,
-			bottom: 40
+			left: 50,
+			right: 25,
+			top: 10,
+			bottom: 50
 		},
 		innerHeight: -1,
 		innerWidth: -1
@@ -99,7 +99,7 @@
 		text={legend.x}
 		padding={4}
 	/>
-	<Legend x={dimensions.margin.left / 2} y={yScale(235)} text={legend.y} padding={4} />
+	<Legend x={dimensions.margin.left - 5} y={yScale(225)} text={legend.y} padding={4} />
 </svg>
 
 {#if highlighted != null && mouseX != null && mouseY != null}

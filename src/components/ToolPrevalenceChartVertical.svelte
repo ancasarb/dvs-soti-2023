@@ -22,12 +22,12 @@
 
 	const dimensions = {
 		width: 550,
-		height: 772,
+		height: 675,
 		margin: {
-			left: 20,
-			right: 85,
+			left: 30,
+			right: 50,
 			top: 100,
-			bottom: 40
+			bottom: 30
 		},
 		innerHeight: -1,
 		innerWidth: -1
