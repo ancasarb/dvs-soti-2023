@@ -125,10 +125,7 @@
 			{@const xNegativeBar = dimensions.innerWidth / 2 - xScale(negativePercentAccessor(item))}
 
 			<rect
-				fill={nameAccessor(item) == selected ||
-				(highlighted !== null && nameAccessor(item) == nameAccessor(highlighted))
-					? '#132052'
-					: '#fca9a6'}
+				fill={nameAccessor(item) == selected ? '#132052' : '#fca9a6'}
 				stroke="#000000"
 				stroke-width="0.5"
 				x={xPositiveBar}
@@ -138,7 +135,7 @@
 				on:mouseover={(event) => onMouseOver(event, item)}
 				on:mouseout={() => onMouseOut()}
 			/>
-			{#each [nameAccessor(item) == selected || (highlighted !== null && nameAccessor(item) == nameAccessor(highlighted)) ? '#d1d2dc' : '#feefed', t.url()] as fill}
+			{#each [nameAccessor(item) == selected ? '#d1d2dc' : '#feefed', t.url()] as fill}
 				<rect
 					{fill}
 					stroke="#000000"

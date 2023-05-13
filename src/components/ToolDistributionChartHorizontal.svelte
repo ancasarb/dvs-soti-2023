@@ -1,9 +1,7 @@
 <script lang="ts">
 	import Legend from '$lib/Legend.svelte';
 
-	import { max, scaleLinear, select, type Bin, axisLeft, axisBottom } from 'd3';
-	import lodash from 'lodash';
-	const range = lodash.range;
+	import { max, scaleLinear, select, type Bin, axisBottom } from 'd3';
 
 	export let data: Bin<number, number>[];
 	export let legend: { x: Array<string>; y: Array<string> };
@@ -12,7 +10,7 @@
 		width: 650,
 		height: 400,
 		margin: {
-			left: 50,
+			left: 45,
 			right: 25,
 			top: 10,
 			bottom: 50
@@ -35,17 +33,13 @@
 	$: barWidth = xScale(data[0].x1!) - xScale(data[0].x0!);
 
 	let xAxis;
-	let yAxis;
 
 	$: {
-		const yAxisGenerator = axisLeft(yScale).tickValues(
-			range(0, binsMaxLength + increment, increment)
-		);
 		const xAxisGenerator = axisBottom(xScale).ticks(maxDomain! - minDomain! - 1);
 
 		select(xAxis).call(xAxisGenerator);
-		select(yAxis).call(yAxisGenerator);
 		select(xAxis).selectAll('.tick').select('line').attr('stroke-width', '0');
+		select(xAxis).select('.domain').attr('visibility', 'hidden');
 		select(xAxis)
 			.selectAll('.tick')
 			.select('text')
@@ -53,26 +47,6 @@
 			.attr('alignment-baseline', 'middle');
 		select(xAxis).select('.tick:last-of-type').attr('visibility', 'hidden');
 	}
-
-	let highlighted: number | null;
-	let mouseX: number | null;
-	let mouseY: number | null;
-
-	$: highlighted = null;
-	$: mouseX = null;
-	$: mouseY = null;
-
-	const onMouseOver = function (event: MouseEvent, value: number) {
-		highlighted = value;
-		mouseX = event.clientX;
-		mouseY = event.clientY;
-	};
-
-	const onMouseOut = function () {
-		highlighted = null;
-		mouseX = null;
-		mouseY = null;
-	};
 </script>
 
 <svg viewBox="0 0 {dimensions.width} {dimensions.height}">
@@ -86,12 +60,14 @@
 				fill="#e1dfd0"
 				stroke-width="0.5"
 				stroke="#c4b9aa"
-				on:mouseover={(event) => onMouseOver(event, bin.length)}
-				on:mouseout={() => onMouseOut()}
 			/>
+			<text
+				x={xScale(bin.x0 || 0) + (xScale(bin.x1 || 0) - xScale(bin.x0 || 0)) / 2}
+				y={yScale(bin.length)}
+				dy={-5}>{bin.length}</text
+			>
 		{/each}
 		<g class="axis" transform={`translate(0, ${dimensions.innerHeight})`} bind:this={xAxis} />
-		<g class="axis" bind:this={yAxis} />
 	</g>
 	<Legend
 		x={dimensions.innerWidth + dimensions.margin.left}
@@ -102,21 +78,15 @@
 	<Legend x={dimensions.margin.left - 5} y={yScale(225)} text={legend.y} padding={4} />
 </svg>
 
-{#if highlighted != null && mouseX != null && mouseY != null}
-	<div id="tooltip" style="left: {mouseX - 10}px; top: {mouseY - 50}px">
-		<slot name="tooltip" item={highlighted} />
-	</div>
-{/if}
-
 <style>
 	.axis {
 		color: #6d604e;
 		stroke-width: 1.5;
 	}
 
-	#tooltip {
-		position: fixed;
-		z-index: 10;
-		background-color: white;
+	text {
+		text-anchor: middle;
+		fill: #6d604e;
+		font-size: 0.7rem;
 	}
 </style>
