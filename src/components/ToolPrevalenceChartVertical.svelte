@@ -22,7 +22,7 @@
 
 	const dimensions = {
 		width: 550,
-		height: 675,
+		height: 700,
 		margin: {
 			left: 30,
 			right: 50,

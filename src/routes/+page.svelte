@@ -235,7 +235,7 @@
 			</ToolPrevalenceChartVertical>
 		</Column>
 	</Row>
-	<!-- <Row padding>
+	<Row padding>
 		<Column sm={4} md={8} lg={0} xlg={0}>
 			<Filter
 				elements={collectTools(data)}
@@ -314,7 +314,7 @@
 				}}
 			/>
 		</Column>
-	</Row> -->
+	</Row>
 </Grid>
 
 <style>
