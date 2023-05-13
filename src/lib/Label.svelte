@@ -33,7 +33,7 @@
 	@media only screen and (max-width: 1056px) {
 		text {
 			text-anchor: start;
-			font-size: 0.60rem;
+			font-size: 0.6rem;
 			dominant-baseline: middle;
 		}
 	}

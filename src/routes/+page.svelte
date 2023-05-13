@@ -394,7 +394,7 @@
 		}
 	}
 
-	@media only screen and (max-width: 1056px) {
+	@media only screen and (min-width: 672px) and (max-width: 1056px) {
 		.padded {
 			padding-left: 0.5rem;
 			padding-right: 0.5rem;

@@ -35,7 +35,7 @@
 		font-weight: bolder;
 	}
 
-	@media only screen and (max-width: 1056px) and (min-width: 672px) {
+	@media only screen and (min-width: 672px) and (max-width: 1056px) {
 		.default {
 			font-size: 0.7rem;
 		}

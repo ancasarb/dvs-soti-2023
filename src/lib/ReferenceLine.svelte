@@ -5,4 +5,4 @@
 	export let y2: number;
 </script>
 
-<line {x1} {x2} y1={y1} y2={y2} stroke="#000000" stroke-width="1.5" />
+<line {x1} {x2} {y1} {y2} stroke="#000000" stroke-width="1.5" />

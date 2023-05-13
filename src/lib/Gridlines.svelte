@@ -10,7 +10,7 @@
 {/each}
 
 <style>
-	@media only screen and (max-width: 1056px) and (min-width: 672px) {
+	@media only screen and (min-width: 672px) and (max-width: 1056px) {
 		text {
 			font-size: 0.7rem;
 		}
