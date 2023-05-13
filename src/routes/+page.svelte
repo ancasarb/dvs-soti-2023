@@ -189,7 +189,7 @@
 			/>
 		</Column>
 	</Row>
-	<!-- <Row padding>
+	<Row padding>
 		<Column sm={4} md={8} lg={0} xlg={0} noGutter={true}>
 			<p class="heading padded">
 				How often do you use each of your selected technologies for data visualization?
@@ -235,7 +235,7 @@
 			</ToolPrevalenceChartVertical>
 		</Column>
 	</Row>
-	<Row padding>
+	<!-- <Row padding>
 		<Column sm={4} md={8} lg={0} xlg={0}>
 			<Filter
 				elements={collectTools(data)}
