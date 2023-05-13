@@ -64,7 +64,7 @@
 			<p class="note">Hover your mouse over a bar to explore further.</p>
 		</Column>
 	</Row>
-	<Row>
+	<!-- <Row>
 		<Column
 			sm={0}
 			md={0}
@@ -299,7 +299,7 @@
 			</ToolPrevalenceChartVertical>
 		</Column>
 	</Row>
-	<!-- <Row padding>
+	<Row padding>
 		<Column sm={4} md={8} lg={12} xlg={12} noGutter={true}>
 			<p class="heading padded">How many technologies do you use to visualize data?</p>
 		</Column>
