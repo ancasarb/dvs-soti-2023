@@ -65,7 +65,7 @@ export function _sortData(data: Data, sortOrder: string): Array<PrevalenceDatum>
 		case 'Alphabetical order':
 		default:
 			return data.prevalence.sort(function (x, y) {
-				return ascending(x.tool, y.tool);
+				return ascending(x.tool.toLowerCase(), y.tool.toLowerCase());
 			});
 	}
 }

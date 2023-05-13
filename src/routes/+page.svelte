@@ -110,9 +110,59 @@
 			</Column>
 		</Row>
 		<Row padding>
+			<Column sm={4} md={8} lg={0} xlg={0} noGutter={true}>
+				<p class="heading padded">
+					How often do you use each of your selected technologies for data visualization?
+				</p>
+				<p class="padded">
+					Share (%) of users who use selected technologies <span class="highlight">often</span>
+					compared to <span class="highlight">rarely & sometimes</span>
+				</p>
+				<p class="note padded">Hover your mouse over a bar to explore further.</p>
+			</Column>
+		</Row>
+		<Row>
+			<Column sm={4} md={8} lg={0} xlg={0} noGutter={true}>
+				<ToolPrevalenceChartVertical
+					data={getToolFrequency(_sortData(data, sortOrder))}
+					{selected}
+					legend={{
+						cross: ['↑ Total user count'],
+						positive: ['Often'],
+						negative: ['Rarely &', 'Sometimes']
+					}}
+				>
+					<div slot="tooltip" let:item class="tooltip">
+						<strong><u>{nameAccessor(item)}</u></strong> <br />
+						<p class="tooltip-body">
+							Out of {totalCountAccessor(item)} <strong>total</strong> users, {highAccessor(item)} ({format(
+								'.0%'
+							)(highPercentAccessor(item))}) are <span class="tooltip-highlight">often</span> users.
+							The rest of {mediumAccessor(item) + lowAccessor(item)} users ({negativePercentAccessor(
+								item
+							)}%) are either <span class="tooltip-highlight">rarely</span> users ({lowAccessor(
+								item
+							)}
+							users representing
+							{format('.0%')(lowPercentAccessor(item))}) or
+							<span class="tooltip-highlight">sometimes</span>
+							users ({mediumAccessor(item)} users representing {format('.0%')(
+								mediumPercentAccessor(item)
+							)}).
+						</p>
+						<p class="tooltip-note">
+							*The sum of the individual user frequency numbers may not necessarily equal the total
+							number of users due to the possibility of users dropping out of the survey or skipping
+							questions.
+						</p>
+					</div>
+				</ToolPrevalenceChartVertical>
+			</Column>
+		</Row>
+		<Row padding>
 			<Column
-				sm={0}
-				md={0}
+				sm={4}
+				md={8}
 				lg={{ span: 6, offset: 3 }}
 				xlg={{ span: 6, offset: 3 }}
 				noGutter={true}
@@ -185,71 +235,6 @@
 						</p>
 					</div>
 				</ToolPrevalenceChartHorizontal>
-			</Column>
-		</Row>
-		<Row padding>
-			<Column sm={4} md={8} lg={0} xlg={0} noGutter={true}>
-				<p class="heading padded">
-					How often do you use each of your selected technologies for data visualization?
-				</p>
-				<p class="padded">
-					Share (%) of users who use selected technologies <span class="highlight">often</span>
-					compared to <span class="highlight">rarely & sometimes</span>
-				</p>
-				<p class="note padded">Hover your mouse over a bar to explore further.</p>
-			</Column>
-		</Row>
-		<Row>
-			<Column sm={4} md={8} lg={0} xlg={0} noGutter={true}>
-				<ToolPrevalenceChartVertical
-					data={getToolFrequency(_sortData(data, sortOrder))}
-					{selected}
-					legend={{
-						cross: ['↑ Total user count'],
-						positive: ['Often'],
-						negative: ['Rarely &', 'Sometimes']
-					}}
-				>
-					<div slot="tooltip" let:item class="tooltip">
-						<strong><u>{nameAccessor(item)}</u></strong> <br />
-						<p class="tooltip-body">
-							Out of {totalCountAccessor(item)} <strong>total</strong> users, {highAccessor(item)} ({format(
-								'.0%'
-							)(highPercentAccessor(item))}) are <span class="tooltip-highlight">often</span> users.
-							The rest of {mediumAccessor(item) + lowAccessor(item)} users ({negativePercentAccessor(
-								item
-							)}%) are either <span class="tooltip-highlight">rarely</span> users ({lowAccessor(
-								item
-							)}
-							users representing
-							{format('.0%')(lowPercentAccessor(item))}) or
-							<span class="tooltip-highlight">sometimes</span>
-							users ({mediumAccessor(item)} users representing {format('.0%')(
-								mediumPercentAccessor(item)
-							)}).
-						</p>
-						<p class="tooltip-note">
-							*The sum of the individual user frequency numbers may not necessarily equal the total
-							number of users due to the possibility of users dropping out of the survey or skipping
-							questions.
-						</p>
-					</div>
-				</ToolPrevalenceChartVertical>
-			</Column>
-		</Row>
-		<Row padding>
-			<Column sm={4} md={8} lg={0} xlg={0}>
-				<Filter
-					elements={collectTools(data)}
-					placeholder="Choose your tool"
-					header="How does your choice of technology compare to others?"
-					{onSelect}
-				/>
-				<Sort
-					header="Change the order"
-					elements={['Total users', 'Usage frequency', 'User preference', 'Alphabetical order']}
-					{onSort}
-				/>
 			</Column>
 		</Row>
 		<Row padding>
@@ -400,6 +385,6 @@
 	}
 
 	div {
-		min-width: 650px;
+		min-width: 550px;
 	}
 </style>
