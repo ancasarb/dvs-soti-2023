@@ -121,7 +121,6 @@
 			/>
 		</Column>
 	</Row>
-
 	<Row padding>
 		<Column sm={0} md={0} lg={12} xlg={12} noGutter={true}>
 			<p class="heading">
@@ -305,16 +304,17 @@
 			<p class="heading padded">How many technologies do you use to visualize data?</p>
 		</Column>
 	</Row>
-	<Column sm={4} md={8} lg={{ span: 9, offset: 2 }} xlg={{ span: 9, offset: 2 }} noGutter={true}>
-		<ToolDistributionChartHorizontal
-			data={binData(data)}
-			legend={{
-				y: ['Users', '↓'],
-				x: ['Number', 'of tools', 'used', '→']
-			}}
-		/>
-	</Column>
-	<Row padding />
+	<Row padding>
+		<Column sm={4} md={8} lg={{ span: 9, offset: 2 }} xlg={{ span: 9, offset: 2 }} noGutter={true}>
+			<ToolDistributionChartHorizontal
+				data={binData(data)}
+				legend={{
+					y: ['Users', '↓'],
+					x: ['Number', 'of tools', 'used', '→']
+				}}
+			/>
+		</Column>
+	</Row>
 </Grid>
 
 <style>
