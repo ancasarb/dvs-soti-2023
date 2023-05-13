@@ -40,7 +40,7 @@
 	}
 </script>
 
-<div>
+<div class="main">
 	<Grid>
 		<Row padding>
 			<Column sm={4} md={8} lg={16} xlg={16}>
@@ -289,8 +289,15 @@
 			</Column>
 		</Row>
 		<Row padding>
-			<Column sm={4} md={8} lg={12} xlg={12} noGutter={true}>
+			<Column sm={0} md={0} lg={12} xlg={12} noGutter={true}>
+				<p class="heading">How many technologies do you use to visualize data?</p>
+				<p>Most users make use of five or fewer tools to visualize data.</p>
+			</Column>
+		</Row>
+		<Row padding>
+			<Column sm={4} md={8} lg={0} xlg={0} noGutter={true}>
 				<p class="heading padded">How many technologies do you use to visualize data?</p>
+				<p class="padded">Most users make use of five or fewer tools to visualize data.</p>
 			</Column>
 		</Row>
 		<Row>
@@ -304,7 +311,7 @@
 				<ToolDistributionChartHorizontal
 					data={binData(data)}
 					legend={{
-						y: ['Users', '↓'],
+						y: ['Users', '↑'],
 						x: ['Number', 'of tools', 'used', '→']
 					}}
 				/>
@@ -384,7 +391,7 @@
 		}
 	}
 
-	div {
+	.main {
 		min-width: 550px;
 	}
 </style>
