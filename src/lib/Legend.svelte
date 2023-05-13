@@ -34,4 +34,14 @@
 		font-size: 0.9rem;
 		font-weight: bolder;
 	}
+
+	@media only screen and (max-width: 1056px) and (min-width: 672px) {
+		.default {
+			font-size: 0.7rem;
+		}
+
+		.highlight {
+			font-size: 0.65rem;
+		}
+	}
 </style>

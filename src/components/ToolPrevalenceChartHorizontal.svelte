@@ -18,7 +18,7 @@
 	export let data: Array<ToolResult>;
 	export let selected: string;
 
-	export let legend: { x: Array<string>; y: { positive: Array<string>; negative: Array<string> } };
+	export let legend: { cross: Array<string>; positive: Array<string>; negative: Array<string> };
 
 	const dimensions = {
 		width: 1134,
@@ -58,8 +58,34 @@
 	}
 
 	$: gridlines = [
-		{ text: '50', x: dimensions.width, y1: yScalePositiveBars(50), y2: yScaleNegativeBars(50) },
-		{ text: '100%', x: dimensions.width, y1: yScalePositiveBars(100), y2: yScaleNegativeBars(0) }
+		{
+			text: '50',
+			x1: 0,
+			x2: dimensions.width,
+			y1: yScalePositiveBars(50),
+			y2: yScalePositiveBars(50)
+		},
+		{
+			text: '50',
+			x1: 0,
+			x2: dimensions.width,
+			y1: yScaleNegativeBars(50),
+			y2: yScaleNegativeBars(50)
+		},
+		{
+			text: '100%',
+			x1: 0,
+			x2: dimensions.width,
+			y1: yScalePositiveBars(100),
+			y2: yScalePositiveBars(100)
+		},
+		{
+			text: '100%',
+			x1: 0,
+			x2: dimensions.width,
+			y1: yScaleNegativeBars(0),
+			y2: yScaleNegativeBars(0)
+		}
 	];
 
 	let highlighted: ToolResult | null;
@@ -153,9 +179,9 @@
 			y2={dimensions.innerHeight / 2}
 		/>
 
-		<Legend x={0} y={dimensions.innerHeight - 10} text={legend.x} highlight={true} />
-		<Legend x={dimensions.width} y={yScalePositiveBars(30)} text={legend.y.positive} />
-		<Legend x={dimensions.width} y={yScaleNegativeBars(70)} text={legend.y.negative} />
+		<Legend x={0} y={dimensions.innerHeight - 10} text={legend.cross} highlight={true} />
+		<Legend x={dimensions.width} y={yScalePositiveBars(30)} text={legend.positive} />
+		<Legend x={dimensions.width} y={yScaleNegativeBars(70)} text={legend.negative} />
 	</g></svg
 >
 

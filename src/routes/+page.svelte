@@ -74,8 +74,9 @@
 				data={getToolFrequency(_sortData(data, sortOrder))}
 				{selected}
 				legend={{
-					x: ['Total user count →'],
-					y: { positive: ['Often'], negative: ['Rarely &', 'Sometimes'] }
+					cross: ['Total user count →'],
+					positive: ['Often'],
+					negative: ['Rarely &', 'Sometimes']
 				}}
 			>
 				<div slot="tooltip" let:item class="tooltip">
@@ -152,8 +153,9 @@
 				data={getUserPreference(_sortData(data, sortOrder))}
 				{selected}
 				legend={{
-					x: ['Total user count →'],
-					y: { positive: ['Very much'], negative: ['Not at all &', 'Somewhat'] }
+					cross: ['Total user count →'],
+					positive: ['Very much'],
+					negative: ['Not at all &', 'Somewhat']
 				}}
 			>
 				<div slot="tooltip" let:item class="tooltip">
@@ -209,8 +211,9 @@
 				data={getToolFrequency(_sortData(data, sortOrder))}
 				{selected}
 				legend={{
-					x: ['Total user count →'],
-					y: { positive: ['Often'], negative: ['Rarely &', 'Sometimes'] }
+					cross: ['↑ Total user count'],
+					positive: ['Often'],
+					negative: ['Rarely &', 'Sometimes']
 				}}
 			>
 				<div slot="tooltip" let:item class="tooltip">
@@ -256,8 +259,9 @@
 				data={getUserPreference(_sortData(data, sortOrder))}
 				{selected}
 				legend={{
-					x: ['Total user count →'],
-					y: { positive: ['Very much'], negative: ['Not at all &', 'Somewhat'] }
+					cross: ['↑ Total user count'],
+					positive: ['Very much'],
+					negative: ['Not at all &', 'Somewhat']
 				}}
 			>
 				<div slot="tooltip" let:item class="tooltip">

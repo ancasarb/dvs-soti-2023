@@ -18,16 +18,16 @@
 	export let data: Array<ToolResult>;
 	export let selected: string;
 
-	export let legend: { x: Array<string>; y: { positive: Array<string>; negative: Array<string> } };
+	export let legend: { cross: Array<string>; positive: Array<string>; negative: Array<string> };
 
 	const dimensions = {
-		width: 600,
-		height: 1134,
+		width: 550,
+		height: 772,
 		margin: {
-			left: 0,
+			left: 20,
 			right: 85,
-			top: 20,
-			bottom: 25
+			top: 100,
+			bottom: 40
 		},
 		innerHeight: -1,
 		innerWidth: -1
@@ -41,13 +41,9 @@
 	$: yMax = max(stackedData[stackedData.length - 1], (d) => d[1]);
 	$: yScale = scaleLinear().domain([0, yMax!]).range([0, dimensions.innerHeight]);
 
-	const xScalePositiveBars = scaleLinear()
+	const xScale = scaleLinear()
 		.domain([0, 100])
-		.range([dimensions.innerWidth / 2, dimensions.innerWidth]);
-
-	const xScaleNegativeBars = scaleLinear()
-		.domain([0, 100])
-		.range([0, dimensions.innerHeight / 2]);
+		.range([0, dimensions.innerWidth / 2]);
 
 	const t = textures.lines().stroke('#8a8483').orientation('3/8').lighter();
 
@@ -58,8 +54,34 @@
 	}
 
 	$: gridlines = [
-		{ text: '50', x: dimensions.width, y1: xScalePositiveBars(50), y2: xScaleNegativeBars(50) },
-		{ text: '100%', x: dimensions.width, y1: xScalePositiveBars(100), y2: xScaleNegativeBars(0) }
+		{
+			text: '50',
+			y1: -dimensions.margin.top / 2,
+			y2: dimensions.height,
+			x1: xScale(50),
+			x2: xScale(50)
+		},
+		{
+			text: '50',
+			y1: -dimensions.margin.top / 2,
+			y2: dimensions.height,
+			x1: dimensions.innerWidth / 2 + xScale(50),
+			x2: dimensions.innerWidth / 2 + xScale(50)
+		},
+		{
+			text: '100%',
+			y1: -dimensions.margin.top / 2,
+			y2: dimensions.height,
+			x1: xScale(0),
+			x2: xScale(0)
+		},
+		{
+			text: '100%',
+			y1: -dimensions.margin.top / 2,
+			y2: dimensions.height,
+			x1: dimensions.innerWidth / 2 + xScale(100),
+			x2: dimensions.innerWidth / 2 + xScale(100)
+		}
 	];
 
 	let highlighted: ToolResult | null;
@@ -93,15 +115,14 @@
 		{#each stackedData as d}
 			{@const item = data[d.index]}
 
-			{@const x = xScale(d[0][0])}
-			{@const width = xScale(d[0][1]) - xScale(d[0][0])}
+			{@const y = yScale(d[0][0])}
+			{@const height = yScale(d[0][1]) - yScale(d[0][0])}
 
-			{@const yPositiveBar = yScalePositiveBars(positivePercentAccessor(item))}
-			{@const heightPositiveBar = dimensions.innerHeight / 2 - yPositiveBar}
+			{@const widthPositiveBar = xScale(positivePercentAccessor(item))}
+			{@const xPositiveBar = dimensions.innerWidth / 2}
 
-			{@const yNegativeBar = dimensions.innerHeight / 2}
-			{@const heightNegativeBar =
-				dimensions.innerHeight - yScaleNegativeBars(negativePercentAccessor(item))}
+			{@const widthNegativeBar = xScale(negativePercentAccessor(item))}
+			{@const xNegativeBar = dimensions.innerWidth / 2 - xScale(negativePercentAccessor(item))}
 
 			<rect
 				fill={nameAccessor(item) == selected ||
@@ -110,10 +131,10 @@
 					: '#fca9a6'}
 				stroke="#000000"
 				stroke-width="0.5"
-				{x}
-				y={yPositiveBar}
-				{width}
-				height={heightPositiveBar}
+				x={xPositiveBar}
+				{y}
+				width={widthPositiveBar}
+				{height}
 				on:mouseover={(event) => onMouseOver(event, item)}
 				on:mouseout={() => onMouseOut()}
 			/>
@@ -122,10 +143,10 @@
 					{fill}
 					stroke="#000000"
 					stroke-width="0.5"
-					{x}
-					y={yNegativeBar}
-					{width}
-					height={heightNegativeBar}
+					x={xNegativeBar}
+					{y}
+					width={widthNegativeBar}
+					{height}
 					on:mouseover={(event) => onMouseOver(event, item)}
 					on:mouseout={() => onMouseOut()}
 				/>
@@ -134,28 +155,44 @@
 		{#each stackedData as d}
 			{@const item = data[d.index]}
 
-			{@const x = xScale(d[0][0])}
-			{@const width = xScale(d[0][1]) - xScale(d[0][0])}
+			{@const y = yScale(d[0][0])}
+			{@const width = yScale(d[0][1]) - yScale(d[0][0])}
 
-			{@const yPositiveBar = yScalePositiveBars(positivePercentAccessor(item))}
+			{@const xPositiveBar = dimensions.innerWidth / 2 + xScale(positivePercentAccessor(item))}
 
+			<!--todo fix labels -->
 			<Label
 				hidden={totalCountAccessor(item) < 200}
-				x={x + width / 2}
-				y={yPositiveBar}
+				horizontal={false}
+				x={xPositiveBar}
+				y={y + width / 2}
 				text={nameAccessor(item)}
 			/>
 		{/each}
-		<ReferenceLine x1={0} x2={dimensions.width} y={dimensions.innerHeight / 2} />
+		<ReferenceLine
+			x1={dimensions.innerWidth / 2}
+			x2={dimensions.innerWidth / 2}
+			y1={-dimensions.margin.top / 2}
+			y2={dimensions.height}
+		/>
 
-		<Legend x={0} y={dimensions.innerHeight - 10} text={legend.x} highlight={true} />
-		<Legend x={dimensions.width} y={yScalePositiveBars(30)} text={legend.y.positive} />
-		<Legend x={dimensions.width} y={yScaleNegativeBars(70)} text={legend.y.negative} />
+		<Legend
+			x={dimensions.innerWidth / 2}
+			y={dimensions.height - dimensions.margin.top - dimensions.margin.bottom / 4}
+			text={legend.cross}
+			highlight={true}
+		/>
+		<Legend
+			y={-dimensions.margin.top / 3}
+			x={dimensions.innerWidth / 2 + xScale(35)}
+			text={legend.positive}
+		/>
+		<Legend y={-dimensions.margin.top / 3} x={xScale(85)} text={legend.negative} />
 	</g></svg
 >
 
 {#if highlighted != null && mouseX != null && mouseY != null}
-	<div id="tooltip" style="left: {mouseX  - 2 * mouseX / 3}px; top: {mouseY + 10}px">
+	<div id="tooltip" style="left: {mouseX - (2 * mouseX) / 3}px; top: {mouseY + 10}px">
 		<slot name="tooltip" item={highlighted} />
 	</div>
 {/if}
