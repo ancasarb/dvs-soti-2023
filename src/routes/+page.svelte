@@ -102,7 +102,7 @@
 						</p>
 						<p class="tooltip-note">
 							*The sum of the individual user frequency numbers may not necessarily equal the total
-							number of users due to the possibility of users dropping out of the survey or skipping
+							number of users due to the possibility of respondents dropping out of the survey or skipping
 							questions.
 						</p>
 					</div>
@@ -152,7 +152,7 @@
 						</p>
 						<p class="tooltip-note">
 							*The sum of the individual user frequency numbers may not necessarily equal the total
-							number of users due to the possibility of users dropping out of the survey or skipping
+							number of users due to the possibility of respondents dropping out of the survey or skipping
 							questions.
 						</p>
 					</div>
@@ -230,7 +230,7 @@
 						</p>
 						<p class="tooltip-note">
 							*The sum of the individual user frequency numbers may not necessarily equal the total
-							number of users due to the possibility of users dropping out of the survey or skipping
+							number of users due to the possibility of respondents dropping out of the survey or skipping
 							questions.
 						</p>
 					</div>
@@ -281,7 +281,7 @@
 						</p>
 						<p class="tooltip-note">
 							*The sum of the individual user frequency numbers may not necessarily equal the total
-							number of users due to the possibility of users dropping out of the survey or skipping
+							number of users due to the possibility of respondents dropping out of the survey or skipping
 							questions.
 						</p>
 					</div>
