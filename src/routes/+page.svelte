@@ -54,7 +54,7 @@
 			</Column>
 		</Row>
 		<Row padding>
-			<Column sm={0} md={0} lg={12} xlg={12} noGutter={true}>
+			<Column sm={0} md={0} lg={{ span: 12, offset: 2 }} xlg={{ span: 12, offset: 2 }} noGutter={true}>
 				<p class="heading">
 					How often do you use each of your selected technologies for data visualization?
 				</p>
@@ -69,8 +69,8 @@
 			<Column
 				sm={0}
 				md={0}
-				lg={{ span: 12, offset: 1 }}
-				xlg={{ span: 12, offset: 1 }}
+				lg={{ span: 12, offset: 2 }}
+				xlg={{ span: 12, offset: 2 }}
 				noGutter={true}
 			>
 				<ToolPrevalenceChartHorizontal
@@ -162,9 +162,9 @@
 		<Row padding>
 			<Column
 				sm={4}
-				md={8}
-				lg={{ span: 6, offset: 3 }}
-				xlg={{ span: 6, offset: 3 }}
+				md={{ span: 4, offset: 2 }}
+				lg={{ span: 6, offset: 5 }}
+				xlg={{ span: 6, offset: 5 }}
 				noGutter={true}
 			>
 				<Filter
@@ -181,7 +181,7 @@
 			</Column>
 		</Row>
 		<Row padding>
-			<Column sm={0} md={0} lg={12} xlg={12} noGutter={true}>
+			<Column sm={0} md={0} lg={{ span: 12, offset: 2 }} xlg={{ span: 12, offset: 2 }} noGutter={true}>
 				<p class="heading">
 					How much do you like using each of your selected technologies for data visualization?
 				</p>
@@ -198,8 +198,8 @@
 			<Column
 				sm={0}
 				md={0}
-				lg={{ span: 12, offset: 1 }}
-				xlg={{ span: 12, offset: 1 }}
+				lg={{ span: 12, offset: 2 }}
+				xlg={{ span: 12, offset: 2 }}
 				noGutter={true}
 			>
 				<ToolPrevalenceChartHorizontal
@@ -289,7 +289,7 @@
 			</Column>
 		</Row>
 		<Row padding>
-			<Column sm={0} md={0} lg={12} xlg={12} noGutter={true}>
+			<Column sm={0} md={0} lg={{ span: 12, offset: 2 }} xlg={{ span: 12, offset: 2 }} noGutter={true}>
 				<p class="heading">How many technologies do you use to visualize data?</p>
 				<p>Most respondents make use of five or fewer tools to visualize data.</p>
 			</Column>
@@ -304,8 +304,8 @@
 			<Column
 				sm={4}
 				md={8}
-				lg={{ span: 9, offset: 2 }}
-				xlg={{ span: 9, offset: 2 }}
+				lg={{ span: 9, offset: 3 }}
+				xlg={{ span: 9, offset: 3 }}
 				noGutter={true}
 			>
 				<ToolDistributionChartHorizontal
