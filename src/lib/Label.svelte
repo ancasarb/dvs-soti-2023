@@ -5,18 +5,19 @@
 
 	export let hidden: boolean;
 	export let horizontal: boolean = true;
+	export let opacity: number;
 </script>
 
 {#if !hidden}
 	{#if horizontal}
 		{#if text.length >= 11}
-			<line x1={x} x2={x} y1={y - 50} y2={y - 5} stroke="#000000" />
-			<text {x} {y} dy={-55}>{text}</text>
+			<line x1={x} x2={x} y1={y - 50} y2={y - 5} stroke="#000000" {opacity} />
+			<text {x} {y} dy={-55} {opacity}>{text}</text>
 		{:else}
-			<text {x} {y} dy={-5}>{text}</text>
+			<text {x} {y} dy={-5} {opacity}>{text}</text>
 		{/if}
 	{:else}
-		<text {x} {y} dx={3}>{text}</text>
+		<text {x} {y} dx={3} {opacity}>{text}</text>
 	{/if}
 {/if}
 

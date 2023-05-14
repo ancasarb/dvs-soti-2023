@@ -124,46 +124,54 @@
 			{@const widthNegativeBar = xScale(negativePercentAccessor(item))}
 			{@const xNegativeBar = dimensions.innerWidth / 2 - xScale(negativePercentAccessor(item))}
 
+			{@const hasHighlighted = highlighted !== null}
+			{@const isHighlighted = hasHighlighted && nameAccessor(item) == nameAccessor(highlighted)}
+			{@const opacity = isHighlighted ? 1 : hasHighlighted ? 0.25 : 1}
+
 			<rect
-				fill={nameAccessor(item) == selected ? '#132052' : '#fca9a6'}
-				stroke="#000000"
-				stroke-width="0.5"
 				x={xPositiveBar}
 				{y}
 				width={widthPositiveBar}
 				{height}
 				on:mouseover={(event) => onMouseOver(event, item)}
 				on:mouseout={() => onMouseOut()}
+				fill={nameAccessor(item) == selected ? '#132052' : '#fca9a6'}
+				stroke="#000000"
+				stroke-width="0.5"
+				{opacity}
 			/>
 			{#each [nameAccessor(item) == selected ? '#d1d2dc' : '#feefed', t.url()] as fill}
 				<rect
-					{fill}
-					stroke="#000000"
-					stroke-width="0.5"
 					x={xNegativeBar}
 					{y}
 					width={widthNegativeBar}
 					{height}
 					on:mouseover={(event) => onMouseOver(event, item)}
 					on:mouseout={() => onMouseOut()}
+					{fill}
+					stroke="#000000"
+					stroke-width="0.5"
+					{opacity}
 				/>
 			{/each}
 		{/each}
 		{#each stackedData as d}
 			{@const item = data[d.index]}
 
-			{@const y = yScale(d[0][0])}
-			{@const width = yScale(d[0][1]) - yScale(d[0][0])}
+			{@const x = dimensions.innerWidth / 2 + xScale(positivePercentAccessor(item))}
+			{@const y = yScale(d[0][0]) + (yScale(d[0][1]) - yScale(d[0][0])) / 2}
 
-			{@const xPositiveBar = dimensions.innerWidth / 2 + xScale(positivePercentAccessor(item))}
+			{@const hasHighlighted = highlighted !== null}
+			{@const isHighlighted = hasHighlighted && nameAccessor(item) == nameAccessor(highlighted)}
+			{@const opacity = isHighlighted ? 1 : hasHighlighted ? 0.25 : 1}
 
-			<!--todo fix labels -->
 			<Label
+				{x}
+				{y}
+				text={nameAccessor(item)}
 				hidden={totalCountAccessor(item) < 200}
 				horizontal={false}
-				x={xPositiveBar}
-				y={y + width / 2}
-				text={nameAccessor(item)}
+				{opacity}
 			/>
 		{/each}
 		<ReferenceLine
@@ -180,8 +188,8 @@
 			highlight={true}
 		/>
 		<Legend
-			y={-dimensions.margin.top / 3}
 			x={dimensions.innerWidth / 2 + xScale(35)}
+			y={-dimensions.margin.top / 3}
 			text={legend.positive}
 		/>
 		<Legend y={-dimensions.margin.top / 3} x={xScale(85)} text={legend.negative} />

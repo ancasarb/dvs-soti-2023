@@ -129,45 +129,48 @@
 			{@const heightNegativeBar =
 				dimensions.innerHeight - yScaleNegativeBars(negativePercentAccessor(item))}
 
+			{@const hasHighlighted = highlighted !== null}
+			{@const isHighlighted = hasHighlighted && nameAccessor(item) == nameAccessor(highlighted)}
+			{@const opacity = isHighlighted ? 1 : hasHighlighted ? 0.25 : 1}
+
 			<rect
-				fill={nameAccessor(item) == selected ? '#132052' : '#fca9a6'}
-				stroke="#000000"
-				stroke-width="0.5"
 				{x}
 				y={yPositiveBar}
 				{width}
 				height={heightPositiveBar}
 				on:mouseover={(event) => onMouseOver(event, item)}
 				on:mouseout={() => onMouseOut()}
+				fill={nameAccessor(item) == selected ? '#132052' : '#fca9a6'}
+				stroke="#000000"
+				stroke-width="0.5"
+				{opacity}
 			/>
 			{#each [nameAccessor(item) == selected ? '#d1d2dc' : '#feefed', t.url()] as fill}
 				<rect
-					{fill}
-					stroke="#000000"
-					stroke-width="0.5"
 					{x}
 					y={yNegativeBar}
 					{width}
 					height={heightNegativeBar}
 					on:mouseover={(event) => onMouseOver(event, item)}
 					on:mouseout={() => onMouseOut()}
+					{fill}
+					stroke="#000000"
+					stroke-width="0.5"
+					{opacity}
 				/>
 			{/each}
 		{/each}
 		{#each stackedData as d}
 			{@const item = data[d.index]}
 
-			{@const x = xScale(d[0][0])}
-			{@const width = xScale(d[0][1]) - xScale(d[0][0])}
+			{@const x = xScale(d[0][0]) + (xScale(d[0][1]) - xScale(d[0][0])) / 2}
+			{@const y = yScalePositiveBars(positivePercentAccessor(item))}
 
-			{@const yPositiveBar = yScalePositiveBars(positivePercentAccessor(item))}
+			{@const hasHighlighted = highlighted !== null}
+			{@const isHighlighted = hasHighlighted && nameAccessor(item) == nameAccessor(highlighted)}
+			{@const opacity = isHighlighted ? 1 : hasHighlighted ? 0.25 : 1}
 
-			<Label
-				hidden={totalCountAccessor(item) < 200}
-				x={x + width / 2}
-				y={yPositiveBar}
-				text={nameAccessor(item)}
-			/>
+			<Label {x} {y} text={nameAccessor(item)} hidden={totalCountAccessor(item) < 200} {opacity} />
 		{/each}
 		<ReferenceLine
 			x1={0}
