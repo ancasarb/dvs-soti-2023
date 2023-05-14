@@ -41,4 +41,11 @@
 			padding-left: 1rem;
 		}
 	}
+
+	@media only screen and (max-width: 1056px) {
+		:global(.bx--list-box__wrapper) {
+			padding-left: 0.5rem;
+			padding-right: 0.5rem;
+		}
+	}
 </style>

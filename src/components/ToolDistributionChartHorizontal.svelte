@@ -75,7 +75,7 @@
 		text={legend.x}
 		padding={4}
 	/>
-	<Legend x={dimensions.margin.left + dimensions.margin.left / 4} y={yScale(225)} text={legend.y} padding={4} />
+	<Legend x={2 * dimensions.margin.left} y={yScale(225)} text={legend.y} padding={4} />
 </svg>
 
 <style>
